@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Login</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <label>Username:</label> {{ form.username }}
+    <label>Password:</label> {{ form.password }}
+    <button type="submit">Log in</button>
+</form>
+
+<p>Don't have an account? <a href="{% url 'student_register' %}">Register as a student</a></p>
+{% endblock %}

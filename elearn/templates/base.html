@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}E-Learning Site{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place to add CSS links or static files -->
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <header style="background: #333; color: #fff; padding: 1em 0; text-align: center;">
+        <h1>E-Learning Platform</h1>
+        {% if user.is_authenticated %}
+            <p>Welcome, {{ user.username }} | 
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            </p>
+        {% endif %}
+        {% block header %}{% endblock %}
+    </header>
+    <main style="min-height: 60vh; padding: 2em;">
+        {% block content %}
+        <!-- Child templates insert content here -->
+        {% endblock %}
+    </main>
+    <footer style="background: #f8f8f8; text-align: center; padding: 1em 0; margin-top: 2em;">
+        <p>&copy; {{ year|default:2025 }} My E-Learning Platform</p>
+        {% block footer %}{% endblock %}
+    </footer>
+</body>
+</html>

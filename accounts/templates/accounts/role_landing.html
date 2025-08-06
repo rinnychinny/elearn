@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Welcome, {{ user.username }}!</h1>
+<p>Select your user area:</p>
+
+{% if 'admin' in roles %}
+    <a href="{% url 'admin:index' %}"><button>Admin Area</button></a>
+{% endif %}
+{% if 'teacher' in roles %}
+    <a href="{% url 'teacher_dashboard' %}"><button>Teacher Area</button></a>
+{% endif %}
+{% if 'student' in roles %}
+    <a href="{% url 'student_dashboard' %}"><button>Student Area</button></a>
+{% endif %}
+{% endblock %}
