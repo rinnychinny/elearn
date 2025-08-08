@@ -16,7 +16,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 LOGIN_REDIRECT_URL = '/accounts/dashboard/'
-LOGOUT_REDIRECT_URL = '/accounts/login/'  # where to go after logout
+LOGOUT_REDIRECT_URL = '/accounts/login/'
 LOGIN_URL = '/accounts/login/'
 
 # Quick-start development settings - unsuitable for production
@@ -59,6 +59,7 @@ ROOT_URLCONF = 'elearn.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # to include project level templates
         'DIRS': [BASE_DIR / 'elearn' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
