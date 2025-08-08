@@ -4,6 +4,8 @@ from django.contrib.auth.models import Group
 from django.contrib.auth import login
 from django.shortcuts import render, redirect
 
+from .forms import UserProfileForm
+from .models import UserProfile
 
 def student_register(request):
     if request.method == 'POST':
@@ -23,6 +25,15 @@ def student_register(request):
 @login_required
 def role_landing(request):
     user = request.user
+    profile, created = UserProfile.objects.get_or_create(user=user, defaults={'public_name': user.username})
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('role_landing')
+    else:
+        form = UserProfileForm(instance=profile)
+    
     roles = []
     if user.is_superuser or user.groups.filter(name='admin').exists():
         roles.append('admin')
@@ -30,4 +41,5 @@ def role_landing(request):
         roles.append('teacher')
     if user.groups.filter(name='student').exists():
         roles.append('student')
-    return render(request, 'accounts/role_landing.html', {'roles': roles})
+    context = {'roles': roles, 'profile_form': form}
+    return render(request, 'accounts/role_landing.html', context)
