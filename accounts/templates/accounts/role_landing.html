@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <h1>Welcome, {{ user.username }}!</h1>
@@ -10,8 +11,7 @@
 
     <form method="post" action="">
         {% csrf_token %}
-        {{ profile_form.as_p }}
-        <button type="submit">Save Profile</button>
+        {% crispy profile_form %}
     </form>
 
 
@@ -25,12 +25,12 @@
 <p>Select your user area:</p>
 
 {% if 'admin' in roles %}
-    <a href="{% url 'admin:index' %}"><button>Admin Area</button></a>
+    <a href="{% url 'admin:index' %}" class="btn btn-primary"><button>Admin Area</button></a>
 {% endif %}
 {% if 'teacher' in roles %}
-    <a href="{% url 'teacher_dashboard' %}"><button>Teacher Area</button></a>
+    <a href="{% url 'teacher_dashboard' %}" class="btn btn-primary"><button>Teacher Area</button></a>
 {% endif %}
 {% if 'student' in roles %}
-    <a href="{% url 'student_dashboard' %}"><button>Student Area</button></a>
+    <a href="{% url 'student_dashboard' %}" class="btn btn-primary"><button>Student Area</button></a>
 {% endif %}
 {% endblock %}
