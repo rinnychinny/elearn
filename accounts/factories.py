@@ -17,11 +17,12 @@ class UserFactory(factory.django.DjangoModelFactory):
         if create:
             obj.save()
 
-class UserProfileFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = UserProfile
 
-    user = factory.SubFactory(UserFactory)
-    public_name = factory.Faker('name')
-    public_status = factory.Faker('text')
-    public_bio = factory.Faker('text')
+# class UserProfileFactory(factory.django.DjangoModelFactory):
+#     class Meta:
+#         model = UserProfile
+
+#     user = factory.SubFactory(UserFactory)
+#     public_name = factory.Faker('name')
+#     public_status = factory.Faker('text')
+#     public_bio = factory.Faker('text')
