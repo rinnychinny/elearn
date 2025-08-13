@@ -1,0 +1,19 @@
+<h2>Your Created Courses</h2>
+<ul>
+  {% for course in created_courses %}
+    <li>{{ course.title }}</li>
+  {% empty %}
+    <li>You haven't created any courses.</li>
+  {% endfor %}
+</ul>
+
+<h2>Your Collaborating Courses</h2>
+<ul>
+  {% for course in collaborating_courses %}
+    <li>{{ course.title }}</li>
+  {% empty %}
+    <li>You are not collaborating on any courses.</li>
+  {% endfor %}
+</ul>
+
+

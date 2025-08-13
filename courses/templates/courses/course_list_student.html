@@ -1,0 +1,18 @@
+<h2>All Available Courses</h2>
+<ul>
+  {% for course in all_courses %}
+    <li>{{ course.title }}</li>
+  {% empty %}
+    <li>No courses found.</li>
+  {% endfor %}
+</ul>
+
+<h2>Your Enrolled Courses</h2>
+<ul>
+  {% for course in enrolled_courses %}
+    <li>{{ course.title }}</li>
+  {% empty %}
+    <li>You are not enrolled in any courses.</li>
+  {% endfor %}
+</ul>
+
