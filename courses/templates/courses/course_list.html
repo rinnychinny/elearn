@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Courses</h2>
+  <ul>
+    {% for course in courses %}
+      <li>{{ course.title }} by {{ course.creator.username }}</li>
+    {% empty %}
+      <li>No courses available.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
