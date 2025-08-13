@@ -11,6 +11,7 @@ class Course(models.Model):
     collaborators = models.ManyToManyField(User, related_name='courses_teaching', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    enrolled_users = models.ManyToManyField(User, blank=True, related_name='courses_enrolled')
 
     def save(self, *args, **kwargs):
         # automatically add creator as a collaborator when saving on newly created

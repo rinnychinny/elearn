@@ -1,12 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Courses</h2>
-  <ul>
-    {% for course in courses %}
-      <li>{{ course.title }} by {{ course.creator.username }}</li>
-    {% empty %}
-      <li>No courses available.</li>
-    {% endfor %}
-  </ul>
+<h1>Courses Overview</h1>
+
+{% if is_student %}
+    {% include "courses/course_list_student.html" %}
+{% endif %}
+
+{% if is_teacher %}
+
+<h2>Your Created Courses</h2>
+<ul>
+  {% for course in created_courses %}
+    <li>{{ course.title }}</li>
+  {% empty %}
+    <li>You haven't created any courses.</li>
+  {% endfor %}
+</ul>
+
+<h2>Your Collaborating Courses</h2>
+<ul>
+  {% for course in collaborating_courses %}
+    <li>{{ course.title }}</li>
+  {% empty %}
+    <li>You are not collaborating on any courses.</li>
+  {% endfor %}
+</ul>
+
+{% endif %}
+
 {% endblock %}

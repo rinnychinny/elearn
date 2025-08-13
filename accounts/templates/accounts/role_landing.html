@@ -15,22 +15,18 @@
     </form>
 
 
-  <p><a href="{% url 'password_change' %}">Change Password</a></p>
+  <p><a href="{% url 'password_change' %}" class="btn btn-primary">Change Password</a></p>
   <form method="post" action="{% url 'logout' %}">
     {% csrf_token %}
     <button type="submit">Log Out</button>
   </form>
 {% endif %}
 
+<a href="{% url 'courses:course_list' %}" class="btn btn-primary">Courses Area</a>
+
 <p>Select your user area:</p>
 
 {% if 'admin' in roles %}
-    <a href="{% url 'admin:index' %}" class="btn btn-primary"><button>Admin Area</button></a>
-{% endif %}
-{% if 'teacher' in roles %}
-    <a href="{% url 'teacher_dashboard' %}" class="btn btn-primary"><button>Teacher Area</button></a>
-{% endif %}
-{% if 'student' in roles %}
-    <a href="{% url 'student_dashboard' %}" class="btn btn-primary"><button>Student Area</button></a>
+    <a href="{% url 'admin:index' %}" class="btn btn-primary">Admin Area</a>
 {% endif %}
 {% endblock %}

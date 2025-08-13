@@ -25,3 +25,31 @@ class CourseListView(LoginRequiredMixin, ListView):
     template_name = 'courses/course_list.html'
     context_object_name = 'courses'
 
+    def get_queryset(self):
+        # Return an empty queryset or a generic one (optional),
+        # since you'll send the detailed lists via context anyway.
+        return Course.objects.none()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+
+        # All courses available (could be filtered as needed)
+        context['all_courses'] = Course.objects.all()
+
+        # Courses the user created
+        context['created_courses'] = Course.objects.filter(creator=user)
+
+        # Courses where the user is a collaborator (but not creator)
+        context['collaborating_courses'] = Course.objects.filter(
+            collaborators=user
+        ).exclude(creator=user)
+
+        # Courses the user is enrolled in
+        context['enrolled_courses'] = user.courses_enrolled.all()
+
+        # define some helper flags for the roles
+        context['is_teacher'] = user.groups.filter(name='teacher').exists()
+        context['is_student'] = user.groups.filter(name='student').exists()
+
+        return context
