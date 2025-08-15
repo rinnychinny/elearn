@@ -1,7 +1,12 @@
 <h2>Your Created Courses</h2>
-<ul>
+
+<a href="{% url 'courses:course_create' %}" class="btn btn-success">Add New Course</a>
+
+<ul class="list-group" id="courseCreatedList" style="max-width: 600px;">
   {% for course in created_courses %}
-    <li>{{ course.title }}</li>
+    <li class="list-group-item list-group-item-action" data-course-id="{{ course.id }}">
+      {{ course.title }}
+    </li>
   {% empty %}
     <li>You haven't created any courses.</li>
   {% endfor %}
