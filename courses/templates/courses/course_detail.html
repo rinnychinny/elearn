@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Course Detail</h1>
+
+{% if is_student %}
+    {% include "courses/course_detail_student.html" %}
+{% endif %}
+
+{% if is_teacher %}
+    {% include "courses/course_detail_teacher.html" %}
+{% endif %}
+
+{% endblock %}
+
+
+

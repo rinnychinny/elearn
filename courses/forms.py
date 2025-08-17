@@ -1,5 +1,5 @@
 from django import forms
-from .models import Course
+from .models import Course, Material
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
@@ -14,3 +14,8 @@ class CourseForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Create Course'))
+
+class MaterialForm(forms.ModelForm):
+    class Meta:
+        model = Material
+        fields = ['title', 'content', 'order'] 

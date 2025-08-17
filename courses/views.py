@@ -1,8 +1,11 @@
+
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView
-from .models import Course
-from .forms import CourseForm
+from django.shortcuts import get_object_or_404
+
+from django.views.generic import CreateView, ListView, DetailView
+from .models import Course, Material
+from .forms import CourseForm, MaterialForm
 
 # Mixin to limit access to users in 'teacher' group
 class TeacherRequiredMixin(UserPassesTestMixin):
@@ -26,8 +29,7 @@ class CourseListView(LoginRequiredMixin, ListView):
     context_object_name = 'courses'
 
     def get_queryset(self):
-        # Return an empty queryset or a generic one (optional),
-        # since you'll send the detailed lists via context anyway.
+        # Return an empty queryset as detailed lists sent via context.
         return Course.objects.none()
 
     def get_context_data(self, **kwargs):
@@ -53,3 +55,39 @@ class CourseListView(LoginRequiredMixin, ListView):
         context['is_student'] = user.groups.filter(name='student').exists()
 
         return context
+
+class CourseDetailView(LoginRequiredMixin, DetailView):
+
+    model = Course
+    template_name = 'courses/course_detail.html'
+    context_object_name = 'course'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        course = self.get_object()
+        user = self.request.user
+
+        # helper flags for the roles
+        context['is_teacher'] = user.groups.filter(name='teacher').exists()
+        context['is_student'] = user.groups.filter(name='student').exists()
+        context['course_title'] = course.title
+        context['course_description'] = course.description
+        context['course_creator'] = course.creator
+        context['course_collaborators'] = course.collaborators.all()
+        context['materials'] = course.materials.order_by('order')  # if using Material model
+        context['students'] = course.enrolled_users.all()
+        return context
+    
+
+class MaterialCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView):
+    model = Material
+    form_class = MaterialForm
+    template_name = 'courses/material_form.html'
+
+    def get_success_url(self):
+        return reverse_lazy('courses:course_detail', kwargs={'pk': self.kwargs['course_id']})
+
+    def form_valid(self, form):
+        course = get_object_or_404(Course, id=self.kwargs['course_id'])
+        form.instance.course = course
+        return super().form_valid(form)

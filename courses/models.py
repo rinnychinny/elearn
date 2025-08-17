@@ -22,3 +22,13 @@ class Course(models.Model):
 
     def __str__(self):
         return self.title
+
+class Material(models.Model):
+
+    course = models.ForeignKey(Course, related_name='materials', on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    order = models.PositiveIntegerField(default=0)
+    content = models.FileField(upload_to='course_materials/', blank=True, null=True)
+
+    def __str__(self):
+        return self.title
