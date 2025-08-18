@@ -1,0 +1,11 @@
+<h2>All Available Courses</h2>
+<ul class="list-group" id="courseAvailableList" style="max-width: 600px;">
+  {% for course in all_courses %}
+    <li class="list-group-item list-group-item-action" data-course-id="{{ course.id }}">
+      {{ course.title }}
+      <a href="{% url 'courses:course_detail' course.id %}" class="btn btn-sm btn-primary">Details</a>
+    </li>
+  {% empty %}
+    <li>There aren't any available courses.</li>
+  {% endfor %}
+</ul>

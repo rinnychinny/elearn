@@ -1,0 +1,7 @@
+<h2>Collaborators:</h2>
+<p>
+    {% for c in course_collaborators %}
+        {{ c.get_full_name }}{% if not forloop.last %}, {% endif %}
+    {% empty %} None
+    {% endfor %}
+</p>

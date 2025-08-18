@@ -1,11 +1,16 @@
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 
+from django.views import View
 from django.views.generic import CreateView, ListView, DetailView
+
+from django.views.generic.edit import DeleteView
+
 from .models import Course, Material
 from .forms import CourseForm, MaterialForm
+
 
 # Mixin to limit access to users in 'teacher' group
 class TeacherRequiredMixin(UserPassesTestMixin):
@@ -91,3 +96,33 @@ class MaterialCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView):
         course = get_object_or_404(Course, id=self.kwargs['course_id'])
         form.instance.course = course
         return super().form_valid(form)
+    
+
+class MaterialDeleteView(LoginRequiredMixin, TeacherRequiredMixin, DeleteView):
+
+    model = Material
+    template_name = 'courses/material_confirm_delete.html'
+
+    def get_success_url(self):
+        return reverse_lazy('courses:course_detail', kwargs={'pk': self.object.course.id})
+
+
+
+class MaterialMoveView(View):
+    def get(self, request, material_id, direction):
+        material = get_object_or_404(Material, id=material_id)
+
+        if direction == 'up':
+            previous = Material.objects.filter(course=material.course, order__lt=material.order).order_by('-order').first()
+            if previous:
+                material.order, previous.order = previous.order, material.order
+                material.save()
+                previous.save()
+        elif direction == 'down':
+            next = Material.objects.filter(course=material.course, order__gt=material.order).order_by('order').first()
+            if next:
+                material.order, next.order = next.order, material.order
+                material.save()
+                next.save()
+
+        return redirect('courses:course_detail', pk=material.course.id)

@@ -1,4 +1,4 @@
-<h2>Your Created Courses</h2>
+<h2>Courses Created List</h2>
 
 <a href="{% url 'courses:course_create' %}" class="btn btn-success">Add New Course</a>
 
@@ -12,14 +12,3 @@
     <li>You haven't created any courses.</li>
   {% endfor %}
 </ul>
-
-<h2>Your Collaborating Courses</h2>
-<ul>
-  {% for course in collaborating_courses %}
-    <li>{{ course.title }}</li>
-  {% empty %}
-    <li>You are not collaborating on any courses.</li>
-  {% endfor %}
-</ul>
-
-

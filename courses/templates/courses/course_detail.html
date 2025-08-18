@@ -2,14 +2,17 @@
 
 {% block content %}
 
-<h1>Course Detail</h1>
+<a href="{% url 'courses:course_list' %}" class="btn btn-secondary mb-3">Back to Course List</a>
 
-{% if is_student %}
-    {% include "courses/course_detail_student.html" %}
-{% endif %}
+<h1>Course: {{ course_title }}</h1>
+<p>Description: {{ course_description }}</p>
+<p><strong>Creator:</strong> {{ course_creator.get_full_name }}</p>
+
+{% include "courses/material_list.html" %}
 
 {% if is_teacher %}
-    {% include "courses/course_detail_teacher.html" %}
+    {% include "courses/course_collaborators.html" %}
+    {% include "courses/course_enrolled_students.html" %}
 {% endif %}
 
 {% endblock %}

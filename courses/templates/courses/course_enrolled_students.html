@@ -1,0 +1,8 @@
+<h2>Enrolled Students</h2>
+<ul>
+  {% for student in students %}
+    <li>{{ student.get_full_name }}</li>
+  {% empty %}
+    <li>No students enrolled.</li>
+  {% endfor %}
+</ul>

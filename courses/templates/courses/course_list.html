@@ -4,12 +4,14 @@
 
 <h1>Courses Overview</h1>
 
-{% if is_student %}
-    {% include "courses/course_list_student.html" %}
+{% if is_teacher %}
+    {% include "courses/course_created_list.html" %}
+    {% include "courses/course_collabroating_courses.html" %}
 {% endif %}
 
-{% if is_teacher %}
-    {% include "courses/course_list_teacher.html" %}
+{% if is_student %}
+    {% include "courses/course_enrolled_list.html" %}
+    {% include "courses/course_available_list.html" %}
 {% endif %}
 
 {% endblock %}
