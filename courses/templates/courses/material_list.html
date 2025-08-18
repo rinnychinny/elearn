@@ -9,7 +9,11 @@
     <li class="list-group-item d-flex justify-content-between align-items-center">
       {{ material.title }}
       <div>
-        <a href="{{ material.content.url }}" target="_blank" class="btn btn-primary btn-sm me-2">View</a>
+        {% if is_student and not is_enrolled %}
+            {# Show mothing #}
+        {% else %}
+            <a href="{{ material.content.url }}" target="_blank" class="btn btn-primary btn-sm me-2">View</a>
+        {% endif %}
         {% if is_teacher %}
             <a href="{% url 'courses:material_delete' material.id %}" class="btn btn-danger btn-sm me-2">Delete</a>
             <a href="{% url 'courses:move_material' material.id 'up' %}" class="btn btn-secondary btn-sm me-1">&#8593;</a>

@@ -6,6 +6,23 @@
 
 <h1>Course: {{ course_title }}</h1>
 <p>Description: {{ course_description }}</p>
+
+<h1>Course: {{ course.title }}</h1>
+<p>Description: {{ course.description }}</p>
+
+{% if is_enrolled %}
+  <form method="post" action="{% url 'courses:disenroll' course.id %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-warning">Disenroll</button>
+  </form>
+{% else %}
+  <form method="post" action="{% url 'courses:enroll' course.id %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary">Enroll</button>
+  </form>
+  <p>You need to enroll to access materials.</p>
+{% endif %}
+
 <p><strong>Creator:</strong> {{ course_creator.get_full_name }}</p>
 
 {% include "courses/material_list.html" %}

@@ -72,14 +72,17 @@ class CourseDetailView(LoginRequiredMixin, DetailView):
         course = self.get_object()
         user = self.request.user
 
-        # helper flags for the roles
+        # helper flags for template logic
         context['is_teacher'] = user.groups.filter(name='teacher').exists()
         context['is_student'] = user.groups.filter(name='student').exists()
+        context['is_enrolled'] = course.enrolled_users.filter(id=user.id).exists()
+
+        #course detail
         context['course_title'] = course.title
         context['course_description'] = course.description
         context['course_creator'] = course.creator
         context['course_collaborators'] = course.collaborators.all()
-        context['materials'] = course.materials.order_by('order')  # if using Material model
+        context['materials'] = course.materials.order_by('order')
         context['students'] = course.enrolled_users.all()
         return context
     
@@ -126,3 +129,15 @@ class MaterialMoveView(View):
                 next.save()
 
         return redirect('courses:course_detail', pk=material.course.id)
+
+class EnrollView(LoginRequiredMixin, View):
+    def post(self, request, course_id):
+        course = get_object_or_404(Course, pk=course_id)
+        course.enrolled_users.add(request.user)
+        return redirect('courses:course_detail', pk=course_id)
+    
+class DisenrollView(LoginRequiredMixin, View):
+    def post(self, request, course_id):
+        course = get_object_or_404(Course, pk=course_id)
+        course.enrolled_users.remove(request.user)
+        return redirect('courses:course_detail', pk=course_id)
