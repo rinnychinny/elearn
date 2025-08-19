@@ -16,6 +16,7 @@ urlpatterns = [
     path('courses/', include('courses.urls')), #course views
 ]
 
+# for hosting files on the Django server in debug
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

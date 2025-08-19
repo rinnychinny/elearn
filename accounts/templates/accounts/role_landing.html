@@ -1,32 +1,12 @@
-{% extends "base.html" %}
-{% load crispy_forms_tags %}
+{% extends "base_with_sidebar.html" %}
 
 {% block content %}
-<h1>Welcome, {{ user.username }}!</h1>
 
 {% if user.is_authenticated %}
-  <p>Welcome, {{ user.username }}!</p>
+  <h1>Welcome, {{ user.username }}!</h1>
 
-  <h2>Your Profile</h2>
+  {% include "accounts/profile.html" %}
 
-    <form method="post" action="">
-        {% csrf_token %}
-        {% crispy profile_form %}
-    </form>
-
-
-  <p><a href="{% url 'password_change' %}" class="btn btn-primary">Change Password</a></p>
-  <form method="post" action="{% url 'logout' %}">
-    {% csrf_token %}
-    <button type="submit">Log Out</button>
-  </form>
 {% endif %}
 
-<a href="{% url 'courses:course_list' %}" class="btn btn-primary">Courses Area</a>
-
-<p>Select your user area:</p>
-
-{% if 'admin' in roles %}
-    <a href="{% url 'admin:index' %}" class="btn btn-primary">Admin Area</a>
-{% endif %}
 {% endblock %}

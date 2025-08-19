@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_with_sidebar.html" %}
 
 {% block content %}
 
@@ -6,7 +6,7 @@
 
 {% if is_teacher %}
     {% include "courses/course_created_list.html" %}
-    {% include "courses/course_collabroating_courses.html" %}
+    {% include "courses/course_collaborating_courses.html" %}
 {% endif %}
 
 {% if is_student %}

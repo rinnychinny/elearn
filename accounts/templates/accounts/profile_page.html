@@ -1,0 +1,11 @@
+{% extends "base_with_sidebar.html" %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+  {% include "accounts/profile.html" %}
+
+{% endif %}
+
+{% endblock %}

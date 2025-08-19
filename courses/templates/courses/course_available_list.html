@@ -1,11 +1,11 @@
 <h2>All Available Courses</h2>
 <ul class="list-group" id="courseAvailableList" style="max-width: 600px;">
   {% for course in all_courses %}
-    <li class="list-group-item list-group-item-action" data-course-id="{{ course.id }}">
+    <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action" data-course-id="{{ course.id }}">
       {{ course.title }}
-      <a href="{% url 'courses:course_detail' course.id %}" class="btn btn-sm btn-primary">Details</a>
+      <a href="{% url 'courses:course_detail' course.id %}" class="btn btn-sm btn-primary ms-3">Details</a>
     </li>
   {% empty %}
-    <li>There aren't any available courses.</li>
+    <li class="list-group-item">There aren't any available courses.</li>
   {% endfor %}
 </ul>
