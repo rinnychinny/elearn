@@ -19,4 +19,7 @@ urlpatterns = [
          DisenrollView.as_view(), name='disenroll'),
     path("courses/<int:pk>/feedback/", FeedbackCreateView.as_view(),
          name="course_feedback_create"),
+    path("courses/<int:pk>/<slug:section>/",
+         CourseDetailView.as_view(), name="course_detail_section"),
+
 ]

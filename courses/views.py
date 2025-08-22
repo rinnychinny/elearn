@@ -64,13 +64,38 @@ class CourseListView(LoginRequiredMixin, ListView):
 class CourseDetailView(LoginRequiredMixin, DetailView):
 
     model = Course
-    template_name = 'courses/course_detail.html'
+    template_name = 'courses/course_detail_base.html'
     context_object_name = 'course'
+
+    SECTION_TEMPLATES = {
+        "materials":    "courses/course_detail_materials.html",
+        "feedback":     "courses/course_detail_feedback.html",
+        "teacher_area": "courses/course_detail_teacher_area.html",
+        "registration": "courses/coure_detail_registration.html",
+    }
+    DEFAULT_SECTION = "materials"
+
+    def get_section(self):
+        # /courses/<pk>/<section>/ or fallback to ?section=… or default
+        return (
+            self.kwargs.get("section")
+            or self.request.GET.get("section")
+            or self.DEFAULT_SECTION
+        )
+
+    def get_template_names(self):
+        section = self.get_section()
+        tpl = self.SECTION_TEMPLATES.get(section)
+        if not tpl:
+            raise Http404("Unknown section")
+        return [tpl]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         course = self.get_object()
         user = self.request.user
+
+        context["active_section"] = self.DEFAULT_SECTION
 
         # helper flags for template logic
         context['is_enrolled'] = course.enrolled_users.filter(
