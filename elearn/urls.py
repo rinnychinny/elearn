@@ -12,11 +12,12 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/accounts/login/', permanent=False)),
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),       # accounts app
-    path('accounts/', include('django.contrib.auth.urls')),  # standard Django auth views
-    path('courses/', include('courses.urls')), #course views
+    # standard Django auth views
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('courses/', include('courses.urls')),  # course views
 ]
 
 # for hosting files on the Django server in debug
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

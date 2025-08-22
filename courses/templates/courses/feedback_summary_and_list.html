@@ -1,0 +1,29 @@
+<section class="mt-4">
+  <h3 class="h5">Reviews</h3>
+
+  {% if average_rating %}
+    <p class="mb-2">
+      Average rating: {{ average_rating|floatformat:1 }}
+      ({{ feedback_count }} review{{ feedback_count|pluralize }})
+    </p>
+  {% else %}
+    <p class="mb-2">No reviews yet.</p>
+  {% endif %}
+
+  <ul class="list-unstyled">
+    {% for fb in feedbacks %}
+      <li class="mb-3 p-3 border rounded">
+        <div class="d-flex justify-content-between">
+          <strong>{{ fb.user.get_full_name|default:fb.user.username }}</strong>
+          <span>{{ fb.rating }}/5</span>
+        </div>
+        {% if fb.comment %}
+          <div class="mt-2">{{ fb.comment|linebreaksbr }}</div>
+        {% endif %}
+        <small class="text-muted">{{ fb.created_at }}</small>
+      </li>
+    {% empty %}
+      {# covered above, but keep an empty fallback #}
+    {% endfor %}
+  </ul>
+</section>

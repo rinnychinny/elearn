@@ -1,5 +1,7 @@
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib import messages
+
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404, redirect
 
@@ -7,15 +9,16 @@ from django.views import View
 from django.views.generic import CreateView, ListView, DetailView
 
 from django.views.generic.edit import DeleteView
-
-from .models import Course, Material
-from .forms import CourseForm, MaterialForm
-
+from .models import Course, Material, CourseFeedback
+from .forms import CourseForm, MaterialForm, CourseFeedbackForm
 
 # Mixin to limit access to users in 'teacher' group
+
+
 class TeacherRequiredMixin(UserPassesTestMixin):
     def test_func(self):
         return self.request.user.groups.filter(name='teacher').exists()
+
 
 class CourseCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView):
     model = Course
@@ -61,6 +64,7 @@ class CourseListView(LoginRequiredMixin, ListView):
 
         return context
 
+
 class CourseDetailView(LoginRequiredMixin, DetailView):
 
     model = Course
@@ -75,17 +79,33 @@ class CourseDetailView(LoginRequiredMixin, DetailView):
         # helper flags for template logic
         context['is_teacher'] = user.groups.filter(name='teacher').exists()
         context['is_student'] = user.groups.filter(name='student').exists()
-        context['is_enrolled'] = course.enrolled_users.filter(id=user.id).exists()
+        context['is_enrolled'] = course.enrolled_users.filter(
+            id=user.id).exists()
 
-        #course detail
+        # course detail
         context['course_title'] = course.title
         context['course_description'] = course.description
         context['course_creator'] = course.creator
         context['course_collaborators'] = course.collaborators.all()
         context['materials'] = course.materials.order_by('order')
         context['students'] = course.enrolled_users.all()
+
+        # course review data
+        feedback = course.feedbacks.select_related(
+            'user').order_by('-created_at')
+        context['feedbacks'] = feedback
+
+        if user.is_authenticated:
+            already = feedback.filter(user=user).exists()
+            context['already_reviewed'] = already
+            context['can_review'] = context['is_enrolled'] and not already
+            # provide a crispy form only when they can review
+            if context['can_review']:
+                context['feedback_form'] = CourseFeedbackForm(
+                    user=user, course=course)
+
         return context
-    
+
 
 class MaterialCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView):
     model = Material
@@ -99,7 +119,7 @@ class MaterialCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView):
         course = get_object_or_404(Course, id=self.kwargs['course_id'])
         form.instance.course = course
         return super().form_valid(form)
-    
+
 
 class MaterialDeleteView(LoginRequiredMixin, TeacherRequiredMixin, DeleteView):
 
@@ -110,19 +130,20 @@ class MaterialDeleteView(LoginRequiredMixin, TeacherRequiredMixin, DeleteView):
         return reverse_lazy('courses:course_detail', kwargs={'pk': self.object.course.id})
 
 
-
 class MaterialMoveView(View):
     def get(self, request, material_id, direction):
         material = get_object_or_404(Material, id=material_id)
 
         if direction == 'up':
-            previous = Material.objects.filter(course=material.course, order__lt=material.order).order_by('-order').first()
+            previous = Material.objects.filter(
+                course=material.course, order__lt=material.order).order_by('-order').first()
             if previous:
                 material.order, previous.order = previous.order, material.order
                 material.save()
                 previous.save()
         elif direction == 'down':
-            next = Material.objects.filter(course=material.course, order__gt=material.order).order_by('order').first()
+            next = Material.objects.filter(
+                course=material.course, order__gt=material.order).order_by('order').first()
             if next:
                 material.order, next.order = next.order, material.order
                 material.save()
@@ -130,14 +151,49 @@ class MaterialMoveView(View):
 
         return redirect('courses:course_detail', pk=material.course.id)
 
+
 class EnrollView(LoginRequiredMixin, View):
     def post(self, request, course_id):
         course = get_object_or_404(Course, pk=course_id)
         course.enrolled_users.add(request.user)
         return redirect('courses:course_detail', pk=course_id)
-    
+
+
 class DisenrollView(LoginRequiredMixin, View):
     def post(self, request, course_id):
         course = get_object_or_404(Course, pk=course_id)
         course.enrolled_users.remove(request.user)
         return redirect('courses:course_detail', pk=course_id)
+
+
+class FeedbackCreateView(LoginRequiredMixin, View):
+    """
+    POST-only endpoint from:
+      <form method="post" action="{% url 'courses:course_feedback_create' course.id %}">
+    """
+
+    def post(self, request, pk, *args, **kwargs):
+        course = get_object_or_404(Course, pk=pk)
+
+        # must be enrolled
+        if not course.enrolled_users.filter(pk=request.user.pk).exists():
+            messages.error(request, "You must be enrolled to leave feedback.")
+            return redirect("courses:course_detail", pk=course.pk)
+
+        # only one feedback per user per course
+        if CourseFeedback.objects.filter(course=course, user=request.user).exists():
+            messages.info(request, "You’ve already reviewed this course.")
+            return redirect("courses:course_detail", pk=course.pk)
+
+        # Bind and validate
+        form = CourseFeedbackForm(
+            request.POST, user=request.user, course=course)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Thanks for your feedback!")
+            return redirect("courses:course_detail", pk=course.pk)
+
+        # Invalid: show a generic message and bounce back
+        messages.error(
+            request, "Please correct the errors in your feedback form.")
+        return redirect("courses:course_detail", pk=course.pk)

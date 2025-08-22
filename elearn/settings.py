@@ -73,7 +73,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # to include project level templates
-        'DIRS': [BASE_DIR / 'elearn' / 'templates'],
+        'DIRS': [BASE_DIR / 'elearn' / 'templates', os.path.join(BASE_DIR, 'accounts', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -1,10 +1,14 @@
 from django import forms
-from .models import UserProfile
+from django.contrib.auth.forms import PasswordChangeForm
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
+from .models import UserProfile
+
 # form for viewing/updating user profile information
+
+
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
@@ -14,4 +18,5 @@ class UserProfileForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'post'  # Use POST method for form
-        self.helper.add_input(Submit('submit', 'Save Profile'))  # Add submit button
+        # Add submit button
+        self.helper.add_input(Submit('submit', 'Save Profile'))
