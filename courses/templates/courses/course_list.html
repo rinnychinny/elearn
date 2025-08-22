@@ -4,12 +4,12 @@
 
 <h1>Courses Overview</h1>
 
-{% if is_teacher %}
+{% if roles.teacher %}
     {% include "courses/course_created_list.html" %}
     {% include "courses/course_collaborating_courses.html" %}
 {% endif %}
 
-{% if is_student %}
+{% if roles.student %}
     {% include "courses/course_enrolled_list.html" %}
     {% include "courses/course_available_list.html" %}
 {% endif %}

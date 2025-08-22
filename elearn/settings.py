@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Usage: build paths inside the project like: BASE_DIR / 'subdir'.
@@ -19,7 +20,6 @@ LOGIN_REDIRECT_URL = '/accounts/dashboard/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
 LOGIN_URL = '/accounts/login/'
 
-import os
 
 # add location for storing materials
 MEDIA_URL = '/media/'
@@ -80,10 +80,12 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'accounts.roles.roles'
             ],
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'elearn.wsgi.application'
 ASGI_APPLICATION = 'elearn.asgi.application'

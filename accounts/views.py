@@ -51,12 +51,5 @@ def role_landing(request):
     else:
         form = UserProfileForm(instance=profile)
 
-    roles = []
-    if user.is_superuser or user.groups.filter(name='admin').exists():
-        roles.append('admin')
-    if user.groups.filter(name='teacher').exists():
-        roles.append('teacher')
-    if user.groups.filter(name='student').exists():
-        roles.append('student')
-    context = {'roles': roles, 'profile_form': form}
+    context = {'profile_form': form}
     return render(request, 'accounts/role_landing.html', context)

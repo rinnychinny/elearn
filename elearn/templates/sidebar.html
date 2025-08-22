@@ -9,7 +9,7 @@
     Change Password
   </a>
 
-  {% if 'admin' in roles %}
+  {% if roles.admin %}
     <a href="{% url 'admin:index' %}" class="list-group-item list-group-item-action">
       Admin Area
     </a>

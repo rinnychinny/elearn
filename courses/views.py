@@ -58,10 +58,6 @@ class CourseListView(LoginRequiredMixin, ListView):
         # Courses the user is enrolled in
         context['enrolled_courses'] = user.courses_enrolled.all()
 
-        # define some helper flags for the roles
-        context['is_teacher'] = user.groups.filter(name='teacher').exists()
-        context['is_student'] = user.groups.filter(name='student').exists()
-
         return context
 
 
@@ -77,8 +73,6 @@ class CourseDetailView(LoginRequiredMixin, DetailView):
         user = self.request.user
 
         # helper flags for template logic
-        context['is_teacher'] = user.groups.filter(name='teacher').exists()
-        context['is_student'] = user.groups.filter(name='student').exists()
         context['is_enrolled'] = course.enrolled_users.filter(
             id=user.id).exists()
 
@@ -96,9 +90,11 @@ class CourseDetailView(LoginRequiredMixin, DetailView):
         context['feedbacks'] = feedback
 
         if user.is_authenticated:
+            is_student = user.groups.filter(name='student').exists()
+            context['is_student'] = is_student
             already = feedback.filter(user=user).exists()
             context['already_reviewed'] = already
-            context['can_review'] = context['is_enrolled'] and not already
+            context['can_review'] = is_student and context['is_enrolled'] and not already
             # provide a crispy form only when they can review
             if context['can_review']:
                 context['feedback_form'] = CourseFeedbackForm(
@@ -185,7 +181,7 @@ class FeedbackCreateView(LoginRequiredMixin, View):
             messages.info(request, "You’ve already reviewed this course.")
             return redirect("courses:course_detail", pk=course.pk)
 
-        # Bind and validate
+        # Bind and then validate the form
         form = CourseFeedbackForm(
             request.POST, user=request.user, course=course)
         if form.is_valid():
@@ -193,7 +189,7 @@ class FeedbackCreateView(LoginRequiredMixin, View):
             messages.success(request, "Thanks for your feedback!")
             return redirect("courses:course_detail", pk=course.pk)
 
-        # Invalid: show a generic message and bounce back
+        # If invalid, show a generic message and bounce back
         messages.error(
             request, "Please correct the errors in your feedback form.")
         return redirect("courses:course_detail", pk=course.pk)

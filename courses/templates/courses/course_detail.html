@@ -7,7 +7,7 @@
 <h1>Course: {{ course_title }}</h1>
 <p>Description: {{ course_description }}</p>
 
-{% if is_student %}
+{% if roles.student %}
     {% if is_enrolled %}
     <form method="post" action="{% url 'courses:disenroll' course.id %}">
         {% csrf_token %}
@@ -26,14 +26,16 @@
 
 {% include "courses/material_list.html" %}
 
-{% if is_teacher %}
+{% if roles.teacher %}
     {% include "courses/course_collaborators.html" %}
     {% include "courses/course_enrolled_students.html" %}
 {% endif %}
 
 <hr class="my-4">
 {% include "courses/feedback_summary_and_list.html" %}
-{% include "courses/feedback_form.html" %}
+{% if roles.student %}
+    {% include "courses/feedback_form.html" %}
+{% endif %}
 
 {% endblock %}
 
