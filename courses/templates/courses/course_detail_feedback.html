@@ -1,0 +1,12 @@
+{% extends "courses/course_detail_base.html" %}
+{% load crispy_forms_tags %}
+{% block section_content %}
+  {% include "courses/feedback_summary_and_list.html" %}
+  {% if roles.student and can_review %}
+    <form method="post" action="{% url 'courses:course_feedback_create' course.id %}">
+      {% csrf_token %}
+      {% crispy feedback_form %}
+      <button type="submit" class="btn btn-primary mt-2">Submit</button>
+    </form>
+  {% endif %}
+{% endblock %}

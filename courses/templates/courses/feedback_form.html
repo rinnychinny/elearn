@@ -13,7 +13,6 @@
   {% elif is_enrolled and already_reviewed %}
     <p class="text-muted mt-3"><em>You’ve already reviewed this course.</em></p>
   {% elif is_enrolled %}
-    {# enrolled but no form provided — unlikely, but safe to handle #}
   {% else %}
     <p class="text-muted mt-3">Enroll to leave feedback.</p>
   {% endif %}

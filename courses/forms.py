@@ -7,6 +7,7 @@ from crispy_forms.layout import Layout, Field, HTML
 
 from .models import Course, Material, CourseFeedback
 
+
 class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
@@ -18,10 +19,21 @@ class CourseForm(forms.ModelForm):
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Create Course'))
 
+
 class MaterialForm(forms.ModelForm):
     class Meta:
         model = Material
-        fields = ['title', 'content', 'order'] 
+        fields = ['title', 'content', 'order']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_tag = False  # no inner <form>
+        self.helper.layout = Layout(
+            Field('title'),
+            Field('content'),
+            Field('order'),
+        )
 
 
 class CourseFeedbackForm(forms.ModelForm):
@@ -36,7 +48,7 @@ class CourseFeedbackForm(forms.ModelForm):
 
         # Crispy setup
         self.helper = FormHelper()
-        self.helper.form_tag = False #template has the <form> tag
+        self.helper.form_tag = False  # template has the <form> tag
         self.helper.layout = Layout(
             HTML("{% if form.non_field_errors %}<div class='text-danger mb-2'>{{ form.non_field_errors }}</div>{% endif %}"),
             Field("rating"),
@@ -47,7 +59,8 @@ class CourseFeedbackForm(forms.ModelForm):
         cleaned = super().clean()
         # Ensure user is enrolled before allowing feedback
         if not self.course.enrolled_users.filter(pk=self.user.pk).exists():
-            raise forms.ValidationError("You must be enrolled in this course to leave feedback.")
+            raise forms.ValidationError(
+                "You must be enrolled in this course to leave feedback.")
         return cleaned
 
     def save(self, commit=True):

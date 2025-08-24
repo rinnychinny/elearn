@@ -1,5 +1,21 @@
-<form method="post" enctype="multipart/form-data">
+{% extends "courses/course_detail_base.html" %}
+{% load crispy_forms_tags %}
+
+{% block section_content %}
+  <h3 class="mb-3">Add material</h3>
+
+  <form method="post" enctype="multipart/form-data"
+        action="{% url 'courses:material_create' course_id=course.id %}">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
-</form>
+    {% if form.non_field_errors %}
+      <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+    {% endif %}
+    {% crispy form %}
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a class="btn btn-secondary ms-2"
+       href="{% url 'courses:course_detail_section' course_id=course.id section='materials' %}">
+      Cancel
+    </a>
+  </form>
+{% endblock %}

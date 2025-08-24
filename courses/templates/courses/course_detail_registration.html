@@ -1,0 +1,21 @@
+{% extends "courses/course_detail_base.html" %}
+
+{% block section_content %}
+
+    {% if is_enrolled %}
+        <p>You are currently ENROLLED</p>
+        <form method="post" action="{% url 'courses:disenroll' course.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-warning">Disenroll</button>
+        </form>
+    {% else %}
+        <p>You are currently NOT ENROLLED</p>
+        <form method="post" action="{% url 'courses:enroll' course.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Enroll</button>
+        </form>
+        <p>You need to enroll to access materials.</p>
+    {% endif %}
+
+{% endblock %}
+

@@ -5,16 +5,16 @@
     <div class="btn-group mb-3 gap-2" role="group">
         <a href="{% url 'courses:course_list' %}" class="btn btn-secondary">Back to Course List</a>
         <a class="btn btn-primary {% if active_section == 'materials' %}active{% endif %}"
-            href="{% url 'courses:course_detail' course.id %}">Materials</a>
+            href="{% url 'courses:course_detail' course_id=course.id %}">Materials</a>
         <a class="btn btn-primary {% if active_section == 'feedback' %}active{% endif %}"
-            href="{% url 'courses:course_detail_section' course.id 'feedback' %}">Feedback</a>
+            href="{% url 'courses:course_detail_section' course_id=course.id section='feedback' %}">Feedback</a>
         {% if roles.student %}
         <a class="btn btn-primary {% if active_section == 'registration' %}active{% endif %}"
-            href="{% url 'courses:course_detail_section' course.id 'registration' %}">Registration</a>
+            href="{% url 'courses:course_detail_section' course_id=course.id section='registration' %}">Registration</a>
         {% endif %}
         {% if roles.teacher or roles.admin %}
         <a class="btn btn-primary {% if active_section == 'teacher_area' %}active{% endif %}"
-            href="{% url 'courses:course_detail_section' course.id 'teacher_area' %}">Teacher Area</a>
+            href="{% url 'courses:course_detail_section' course_id=course.id section='teacher_area' %}">Teacher Area</a>
         {% endif %}
     </div>
 

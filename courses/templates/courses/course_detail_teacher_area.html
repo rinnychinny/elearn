@@ -1,0 +1,7 @@
+{% extends "courses/course_detail_base.html" %}
+{% block section_content %}
+  {% if roles.teacher or roles.admin %}
+    {% include "courses/course_collaborators.html" %}
+    {% include "courses/course_enrolled_students.html" %}
+  {% endif %}
+{% endblock %}

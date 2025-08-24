@@ -4,6 +4,7 @@ from django.contrib import messages
 
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404, redirect
+from django.http import Http404
 
 from django.views import View
 from django.views.generic import CreateView, ListView, DetailView
@@ -66,12 +67,13 @@ class CourseDetailView(LoginRequiredMixin, DetailView):
     model = Course
     template_name = 'courses/course_detail_base.html'
     context_object_name = 'course'
+    pk_url_kwarg = 'course_id'
 
     SECTION_TEMPLATES = {
         "materials":    "courses/course_detail_materials.html",
         "feedback":     "courses/course_detail_feedback.html",
         "teacher_area": "courses/course_detail_teacher_area.html",
-        "registration": "courses/coure_detail_registration.html",
+        "registration": "courses/course_detail_registration.html",
     }
     DEFAULT_SECTION = "materials"
 
@@ -92,10 +94,11 @@ class CourseDetailView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        course = self.get_object()
+        course = self.object
         user = self.request.user
 
-        context["active_section"] = self.DEFAULT_SECTION
+        section = self.get_section()
+        context["active_section"] = section
 
         # helper flags for template logic
         context['is_enrolled'] = course.enrolled_users.filter(
@@ -113,17 +116,17 @@ class CourseDetailView(LoginRequiredMixin, DetailView):
         feedback = course.feedbacks.select_related(
             'user').order_by('-created_at')
         context['feedbacks'] = feedback
-
-        if user.is_authenticated:
-            is_student = user.groups.filter(name='student').exists()
-            context['is_student'] = is_student
-            already = feedback.filter(user=user).exists()
-            context['already_reviewed'] = already
-            context['can_review'] = is_student and context['is_enrolled'] and not already
-            # provide a crispy form only when they can review
-            if context['can_review']:
-                context['feedback_form'] = CourseFeedbackForm(
-                    user=user, course=course)
+        is_student = user.groups.filter(name='student').exists()
+        context['is_student'] = is_student
+        already = feedback.filter(user=user).exists()
+        context['already_reviewed'] = already
+        context['can_review'] = is_student and context['is_enrolled'] and not already
+        context['average_rating'] = course.average_rating()
+        context['feedback_count'] = course.feedback_count()
+        # provide a crispy form only when they can review
+        if context['can_review']:
+            context['feedback_form'] = CourseFeedbackForm(
+                user=user, course=course)
 
         return context
 
@@ -133,8 +136,15 @@ class MaterialCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView):
     form_class = MaterialForm
     template_name = 'courses/material_form.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        course = get_object_or_404(Course, id=self.kwargs['course_id'])
+        context['course'] = course
+        context['active_section'] = 'materials'
+        return context
+
     def get_success_url(self):
-        return reverse_lazy('courses:course_detail', kwargs={'pk': self.kwargs['course_id']})
+        return reverse_lazy('courses:course_detail', kwargs={'course_id': self.kwargs['course_id']})
 
     def form_valid(self, form):
         course = get_object_or_404(Course, id=self.kwargs['course_id'])
@@ -146,9 +156,10 @@ class MaterialDeleteView(LoginRequiredMixin, TeacherRequiredMixin, DeleteView):
 
     model = Material
     template_name = 'courses/material_confirm_delete.html'
+    pk_url_kwarg = "material_id"
 
     def get_success_url(self):
-        return reverse_lazy('courses:course_detail', kwargs={'pk': self.object.course.id})
+        return reverse_lazy('courses:course_detail', kwargs={'course_id': self.object.course.id})
 
 
 class MaterialMoveView(View):
@@ -170,21 +181,23 @@ class MaterialMoveView(View):
                 material.save()
                 next.save()
 
-        return redirect('courses:course_detail', pk=material.course.id)
+        return redirect('courses:course_detail', course_id=material.course.id)
 
 
 class EnrollView(LoginRequiredMixin, View):
     def post(self, request, course_id):
         course = get_object_or_404(Course, pk=course_id)
         course.enrolled_users.add(request.user)
-        return redirect('courses:course_detail', pk=course_id)
+        return redirect('courses:course_detail_section',
+                        course_id=course_id, section='registration')
 
 
 class DisenrollView(LoginRequiredMixin, View):
     def post(self, request, course_id):
         course = get_object_or_404(Course, pk=course_id)
         course.enrolled_users.remove(request.user)
-        return redirect('courses:course_detail', pk=course_id)
+        return redirect('courses:course_detail_section',
+                        course_id=course_id, section='registration')
 
 
 class FeedbackCreateView(LoginRequiredMixin, View):
@@ -193,18 +206,18 @@ class FeedbackCreateView(LoginRequiredMixin, View):
       <form method="post" action="{% url 'courses:course_feedback_create' course.id %}">
     """
 
-    def post(self, request, pk, *args, **kwargs):
-        course = get_object_or_404(Course, pk=pk)
+    def post(self, request, course_id, *args, **kwargs):
+        course = get_object_or_404(Course, pk=course_id)
 
         # must be enrolled
         if not course.enrolled_users.filter(pk=request.user.pk).exists():
             messages.error(request, "You must be enrolled to leave feedback.")
-            return redirect("courses:course_detail", pk=course.pk)
+            return redirect("courses:course_detail", course_id=course_id, section='feedback')
 
         # only one feedback per user per course
         if CourseFeedback.objects.filter(course=course, user=request.user).exists():
             messages.info(request, "You’ve already reviewed this course.")
-            return redirect("courses:course_detail", pk=course.pk)
+            return redirect("courses:course_detail", course_id=course_id, section='feedback')
 
         # Bind and then validate the form
         form = CourseFeedbackForm(
@@ -212,9 +225,9 @@ class FeedbackCreateView(LoginRequiredMixin, View):
         if form.is_valid():
             form.save()
             messages.success(request, "Thanks for your feedback!")
-            return redirect("courses:course_detail", pk=course.pk)
+            return redirect("courses:course_detail", course_id=course_id, section='feedback')
 
         # If invalid, show a generic message and bounce back
         messages.error(
             request, "Please correct the errors in your feedback form.")
-        return redirect("courses:course_detail", pk=course.pk)
+        return redirect("courses:course_detail", course_id=course_id, section='feedback')

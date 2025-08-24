@@ -1,7 +1,7 @@
 <h2>Enrolled Students</h2>
 <ul>
   {% for student in students %}
-    <li>{{ student.get_full_name }}</li>
+    <li>{% firstof student.get_full_name student.username student.email %}</li>
   {% empty %}
     <li>No students enrolled.</li>
   {% endfor %}

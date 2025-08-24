@@ -27,6 +27,12 @@ class Course(models.Model):
     def __str__(self):
         return self.title
 
+    def average_rating(self):
+        return self.feedbacks.aggregate(avg=Avg("rating"))["avg"]
+
+    def feedback_count(self):
+        return self.feedbacks.aggregate(c=Count("id"))["c"]
+
 
 class Material(models.Model):
 
@@ -60,9 +66,3 @@ class CourseFeedback(models.Model):
 
     def __str__(self):
         return f"{self.user} feedback for {self.course}"
-
-    def average_rating(self):
-        return self.feedbacks.aggregate(x=Avg("rating"))["x"]
-
-    def feedback_count(self):
-        return self.feedbacks.aggregate(c=Count("id"))["c"]
