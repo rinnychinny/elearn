@@ -1,0 +1,14 @@
+{% extends "base_with_sidebar.html" %}
+
+{% block content %}
+  <h2>Confirm Chat Room Creation</h2>
+
+  <p>You are about to create a new chat room named <strong>{{ room_name }}</strong>.</p>
+
+  <form method="post" action="{% url 'chat:create_confirm' room_name=room_name %}">
+    {% csrf_token %}
+    <input type="hidden" name="room_name" value="{{ room_name }}">
+    <button type="submit" class="btn btn-primary">Confirm</button>
+    <a href="{% url 'chat:chat_index' %}" class="btn btn-secondary ms-2">Cancel</a>
+  </form>
+{% endblock %}

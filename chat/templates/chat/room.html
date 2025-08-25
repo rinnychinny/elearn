@@ -1,0 +1,57 @@
+{% extends "base_with_sidebar.html" %}
+
+{% block content %}
+<h2>
+    Chat Room: {{ room.name }}
+    <a href="{% url 'chat:chat_index' %}" class="btn btn-secondary ms-2">Back to Chats</a>
+</h2>
+
+<form method="post" class="mb-3">
+  {% csrf_token %}
+  {% if is_member %}
+    <button type="submit" name="action" value="unsubscribe" class="btn btn-danger">Unsubscribe</button>
+  {% else %}
+    <button type="submit" name="action" value="subscribe" class="btn btn-success">Subscribe</button>
+  {% endif %}
+</form>
+
+<textarea id="chat-log" cols="100" rows="20" readonly></textarea><br>
+
+<input id="chat-message-input" type="text" size="100" autocomplete="off"><br>
+
+<input id="chat-message-submit" type="button" value="Send">
+
+<script>
+  const roomName = "{{ room.name|escapejs }}";
+
+  const chatSocket = new WebSocket(
+    'ws://' + window.location.host +
+    '/ws/chat/' + roomName + '/'
+  );
+
+  chatSocket.onmessage = function(e) {
+    const data = JSON.parse(e.data);
+    document.querySelector('#chat-log').value += (data.message + '\n');
+  };
+
+  chatSocket.onclose = function(e) {
+    console.error('Chat socket closed unexpectedly');
+  };
+
+  document.querySelector('#chat-message-input').focus();
+  document.querySelector('#chat-message-input').onkeyup = function(e) {
+    if (e.key === 'Enter') {  // Enter key sends the message
+      document.querySelector('#chat-message-submit').click();
+    }
+  };
+
+  document.querySelector('#chat-message-submit').onclick = function(e) {
+    const messageInputDom = document.querySelector('#chat-message-input');
+    const message = messageInputDom.value;
+    if (message.trim()) {
+      chatSocket.send(JSON.stringify({'message': message}));
+      messageInputDom.value = '';
+    }
+  };
+</script>
+{% endblock %}

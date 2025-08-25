@@ -11,10 +11,11 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', RedirectView.as_view(url='/accounts/login/', permanent=False)),
     path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')),       # accounts app
+    path('accounts/', include('accounts.urls')),       # custom accounts urls
     # standard Django auth views
     path('accounts/', include('django.contrib.auth.urls')),
-    path('courses/', include('courses.urls')),  # course views
+    path('courses/', include('courses.urls')),  # course urls
+    path('chat/', include('chat.urls')),  # chat urls
 ]
 
 # for hosting files on the Django server in debug
