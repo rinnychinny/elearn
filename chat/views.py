@@ -1,3 +1,6 @@
+from .models import ChatRoom, ChatMessage
+from django.shortcuts import get_object_or_404
+from django.views.generic import DetailView
 from .models import ChatRoom
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView, View
@@ -30,6 +33,9 @@ class ChatRoomDetailView(LoginRequiredMixin, DetailView):
         context = super().get_context_data(**kwargs)
         user = self.request.user
         context['is_member'] = user in self.object.members.all()
+        # Pass all messages for this room, ordered by time
+        context['messages'] = ChatMessage.objects.filter(
+            room=self.object).order_by('timestamp')
         return context
 
     def post(self, request, *args, **kwargs):
