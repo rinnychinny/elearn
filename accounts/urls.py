@@ -30,5 +30,6 @@ urlpatterns = [
         ),
         name="password_change_done",
     ),
+    path('notifications/', views.NotificationListView.as_view(), name='notifications'),
 
 ]

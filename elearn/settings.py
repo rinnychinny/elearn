@@ -37,6 +37,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CELERY_BROKER_URL = "redis://localhost:6379/0"
+CELERY_RESULT_BACKEND = "redis://localhost:6379/0"  # optional if using results
+CELERY_TIMEZONE = "UTC"
 
 # Application definition
 
@@ -82,7 +85,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'accounts.roles.roles'
+                'accounts.roles.roles',
+                'accounts.notifications.unread_notifications_count',
             ],
         },
     },

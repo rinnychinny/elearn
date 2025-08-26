@@ -15,6 +15,7 @@ from django.views.generic.edit import DeleteView
 from .models import Course, Material, CourseFeedback, Enrollment
 from .forms import CourseForm, MaterialForm, CourseFeedbackForm
 
+from .tasks import notify_teacher_of_enrollment
 
 # Mixin to limit access to users in 'teacher' group
 
@@ -108,13 +109,19 @@ class CourseDetailView(LoginRequiredMixin, DetailView):
         context['is_enrolled'] = course.enrolled_users.filter(
             id=user.id).exists()
 
+        try:
+            enrollment = Enrollment.objects.get(
+                course=course, user=user)
+            context['is_blocked'] = enrollment.blocked
+        except Enrollment.DoesNotExist:
+            context['is_blocked'] = False
+
         # course detail
         context['course_title'] = course.title
         context['course_description'] = course.description
         context['course_creator'] = course.creator
         context['course_collaborators'] = course.collaborators.all()
         context['materials'] = course.materials.order_by('order')
-        # context['students'] = course.enrolled_users.all()
         context['students'] = Enrollment.objects.filter(course=course)
 
         # course review data
@@ -193,6 +200,13 @@ class EnrollView(LoginRequiredMixin, View):
     def post(self, request, course_id):
         course = get_object_or_404(Course, pk=course_id)
         course.enrolled_users.add(request.user)
+
+        # Create notification to teacher of enrollment
+        notify_teacher_of_enrollment.delay(
+            teacher_id=course.creator.id,
+            student_name=request.user.get_full_name() or request.user.username,
+            course_title=course.title
+        )
         return redirect('courses:course_detail_section',
                         course_id=course_id, section='registration')
 

@@ -1,3 +1,6 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Notification
+from django.views.generic.list import ListView
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -87,3 +90,14 @@ def role_landing(request):
 
     context = {'profile_form': form}
     return render(request, 'accounts/role_landing.html', context)
+
+
+class NotificationListView(LoginRequiredMixin, ListView):
+    model = Notification
+    template_name = "accounts/notifications.html"
+    context_object_name = "notifications"
+    paginate_by = 20
+
+    def get_queryset(self):
+        # Return notifications for current user, newest first
+        return Notification.objects.filter(user=self.request.user).order_by('-created_at')

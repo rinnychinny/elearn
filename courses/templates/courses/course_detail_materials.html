@@ -1,4 +1,9 @@
 {% extends "courses/course_detail_base.html" %}
 {% block section_content %}
-  {% include "courses/material_list.html" %}
+  {% if is_blocked %}
+    <p>This section is BLOCKED for this user</p>
+  {% else %}
+    {% include "courses/material_list.html" %}
+  {% endif %}
 {% endblock %}
+
