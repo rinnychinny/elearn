@@ -1,0 +1,648 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2025-08-06T18:46:45.819Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "admin",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2025-08-06T18:47:01.025Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "2",
+    "object_repr": "teacher",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2025-08-06T18:47:11.944Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "3",
+    "object_repr": "student",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2025-08-06T18:47:30.725Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "admin",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2025-08-13T12:46:40.517Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "4",
+    "object_repr": "test_teacher",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2025-08-13T12:47:28.369Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "4",
+    "object_repr": "test_teacher",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2025-08-25T12:47:03.114Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "2",
+    "object_repr": "blobby",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2025-08-25T12:47:03.114Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "3",
+    "object_repr": "flobby",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2025-08-25T12:47:03.114Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "7",
+    "object_repr": "iamastudent",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2025-08-25T12:47:03.114Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "5",
+    "object_repr": "test_student",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2025-08-25T12:47:03.114Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "6",
+    "object_repr": "test_student2",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2025-08-25T12:47:03.115Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "4",
+    "object_repr": "test_teacher",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2025-08-25T12:56:16.339Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "11",
+    "object_repr": "teacher1",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2025-08-25T12:56:35.327Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "12",
+    "object_repr": "teacher2",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2025-08-25T12:56:49.769Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "13",
+    "object_repr": "teacher3",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2025-08-25T12:58:07.673Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "11",
+    "object_repr": "teacher1",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Email address\", \"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2025-08-25T12:58:34.273Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "12",
+    "object_repr": "teacher2",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Email address\", \"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2025-08-25T12:59:16.829Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "13",
+    "object_repr": "teacher3",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Email address\", \"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2025-08-25T12:59:46.346Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "8",
+    "object_repr": "student1",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Email address\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2025-08-25T13:00:04.964Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "9",
+    "object_repr": "student2",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Email address\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2025-08-25T13:00:24.459Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "10",
+    "object_repr": "student3",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Email address\"]}}]"
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 1,
+  "fields": {
+    "name": "admin",
+    "permissions": [
+      1,
+      2,
+      3,
+      4,
+      9,
+      10,
+      11,
+      12,
+      5,
+      6,
+      7,
+      8,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 2,
+  "fields": {
+    "name": "teacher",
+    "permissions": []
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 3,
+  "fields": {
+    "name": "student",
+    "permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$AkBzPfi6wXZidmHDmlnHVC$aoIFc6kSkcCkSoDa+CMPsa4Qm9y+t7fVGVQdHbgDX2E=",
+    "last_login": "2025-08-25T12:55:55.766Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-08-05T05:12:35.754Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$BPiUVPgBJxihpVHTt80qR0$K1+o2uPWVPKhA0GsmCKxciacnaxRCez/S+9+Xrt15NA=",
+    "last_login": "2025-08-25T14:04:39.323Z",
+    "is_superuser": false,
+    "username": "student1",
+    "first_name": "stud",
+    "last_name": "one",
+    "email": "student1@elearn.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-08-25T12:52:23Z",
+    "groups": [
+      3
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$nDEx4QJK1SQQQ2jRoKsVtp$oNde6JIiBEC5S27y+GtmRLYvJ288yBKcZ7LFB0Dw4+0=",
+    "last_login": "2025-08-25T14:01:44.217Z",
+    "is_superuser": false,
+    "username": "student2",
+    "first_name": "stud",
+    "last_name": "two",
+    "email": "student2@elearn.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-08-25T12:53:33Z",
+    "groups": [
+      3
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 10,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$RNJHZJ5wPxyAS1MClpca6J$3Atacid7Yy/sui7rmp4D6ikw9+dSxDPEMTjCJYPK6Zk=",
+    "last_login": "2025-08-25T12:54:28Z",
+    "is_superuser": false,
+    "username": "student3",
+    "first_name": "stud",
+    "last_name": "three",
+    "email": "student3@elearn.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-08-25T12:54:28Z",
+    "groups": [
+      3
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$DnWwhYEpy9nNXPIRvq2ihE$wkpKT3iCAgEc8DTc1M/KPMP/Ly3U9SQD6AVit7DnRsE=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "teacher1",
+    "first_name": "teach",
+    "last_name": "one",
+    "email": "teacher1@elearn.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-08-25T12:56:15Z",
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 12,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$QYMumi6wWjXnAvm1q0Wnvd$JgMXvPPIi3YC0ajbJZkB0F2wgafGHL2R1jXjoOjpwrY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "teacher2",
+    "first_name": "teach",
+    "last_name": "two",
+    "email": "teacher2@elearn.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-08-25T12:56:34Z",
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 13,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$emrhIiA7Jv9jrTdyZ8zMIz$KG3i1fqPpgoajD/WysBmFjeAd43bvsy+vvqpijylq/0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "teacher3",
+    "first_name": "teach",
+    "last_name": "three",
+    "email": "teacher3@elearn.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-08-25T12:56:49Z",
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "2im4cq1txdnosyev7x0dungocrybexht",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hBaJggu3XsGMswMUjWQlHZlvLtt0oVu33v_v1XEdSlx7TLHidVFBXX6ZQnpKXUX_MB6b5paXeYp6T3Rh-361lhe16P9OyjYy7b2CClkJIsGiLMJTkhGS45IPLoksOFBsrEjePF24HA22bAwikAG9fkCIlw5hA:1uqXlY:4duetjm9i26RBseuiRXu7Efv5wv3r7DwMn1DeUeWjRo",
+    "expire_date": "2025-09-08T14:01:44.230Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "d1tdk37h1pwagm3qgtii15em69wa1rbv",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAUBf-FtSHIq8Wl-34D4T6QqoGktCvjv2uTLnR7Zua8REzbWuLWeYkziYsYxel3g4QPrjuge6q3JrHVdZlB7oo8aJdTI35eD_fvoKRevrUi47yxyodBDzkEbc8AmMxogleOAVVQNihGAHCUs_XE2RnS2oLHlMX7A8d-OAc:1uqXoN:Jij6C3_dVjR67I8uaGjp96TvpmvwfE1EaSCqxgV6etc",
+    "expire_date": "2025-09-08T14:04:39.334Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "gmnhm7lrmmaieenq3o1b708vn71yl4yx",
+  "fields": {
+    "session_data": ".eJxVjMsOgjAUBf-la9OUW1qoS_d-A7kvBDVtQmFl_HclYaHbMzPnZQbc1mnYqi7DLOZsgjn9boT80LwDuWO-Fcslr8tMdlfsQau9FtHn5XD_Dias07dOOEZgFZGese29j8wYGVoFTw40cep8I-qogRAAnLSOOuxSpBB1FPP-AAQyOFo:1uoMaU:4bigadIBpMR7XrTotxPZOcXumbB_3NMNoYzJdDJSrDE",
+    "expire_date": "2025-09-02T13:41:18.617Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "ym990y7k0231z69akdobe3vwstdowg5b",
+  "fields": {
+    "session_data": ".eJxVjMEOwiAQRP-FsyHA0oV49O43EBYWqRqalPZk_Hcl6UGPM-_NvESI-1bD3nkNcxZnocXpt6OYHtwGyPfYbotMS9vWmeRQ5EG7vC6Zn5fD_TuosdfvmhICZ7QukjdkrDOOJi46gYu-IBbltQUP4DQXZUqxCj14NOBGnsT7A916Nxs:1uqWjr:8oC0UfmsTs4j3pAuLghWJNiSm2NXdEPCR9HbO2yJESM",
+    "expire_date": "2025-09-08T12:55:55.774Z"
+  }
+},
+{
+  "model": "accounts.userprofile",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "public_name": "admin",
+    "public_status": "my status",
+    "public_bio": "my bio"
+  }
+},
+{
+  "model": "accounts.userprofile",
+  "pk": 6,
+  "fields": {
+    "user": 8,
+    "public_name": "public name 1...",
+    "public_status": "Studying....",
+    "public_bio": ""
+  }
+},
+{
+  "model": "accounts.userprofile",
+  "pk": 7,
+  "fields": {
+    "user": 9,
+    "public_name": "display name 2 ....",
+    "public_status": "studying hard ...",
+    "public_bio": ""
+  }
+},
+{
+  "model": "accounts.userprofile",
+  "pk": 8,
+  "fields": {
+    "user": 10,
+    "public_name": "display name 3 ...",
+    "public_status": "studying even harder ...",
+    "public_bio": ""
+  }
+},
+{
+  "model": "accounts.userprofile",
+  "pk": 9,
+  "fields": {
+    "user": 11,
+    "public_name": "teacher1",
+    "public_status": "",
+    "public_bio": null
+  }
+},
+{
+  "model": "accounts.userprofile",
+  "pk": 10,
+  "fields": {
+    "user": 12,
+    "public_name": "teacher2",
+    "public_status": "",
+    "public_bio": null
+  }
+},
+{
+  "model": "accounts.userprofile",
+  "pk": 11,
+  "fields": {
+    "user": 13,
+    "public_name": "teacher3",
+    "public_status": "",
+    "public_bio": null
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 1,
+  "fields": {
+    "name": "chatroom1",
+    "description": "",
+    "members": []
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 2,
+  "fields": {
+    "name": "chatroom2",
+    "description": "",
+    "members": []
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 3,
+  "fields": {
+    "name": "chatroom3",
+    "description": "",
+    "members": []
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 4,
+  "fields": {
+    "name": "chatroom4",
+    "description": "",
+    "members": []
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 5,
+  "fields": {
+    "name": "chatroom5",
+    "description": "",
+    "members": []
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 6,
+  "fields": {
+    "name": "new chat",
+    "description": "",
+    "members": []
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 10,
+  "fields": {
+    "room": 1,
+    "sender": 9,
+    "content": "hi, i am student 2. anyone there?",
+    "timestamp": "2025-08-25T14:02:17.263Z"
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 11,
+  "fields": {
+    "room": 1,
+    "sender": 8,
+    "content": "hi, i am student 1, how are you?",
+    "timestamp": "2025-08-25T14:05:10.529Z"
+  }
+},
+{
+  "model": "chat.chatmessage",
+  "pk": 12,
+  "fields": {
+    "room": 1,
+    "sender": 9,
+    "content": "very well, glad to see the socket is working!",
+    "timestamp": "2025-08-25T14:05:55.267Z"
+  }
+}
+]

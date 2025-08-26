@@ -13,7 +13,7 @@ class Command(BaseCommand):
         # Create admin superuser
         if not User.objects.filter(username='admin').exists():
             User.objects.create_superuser(
-                'admin', 'admin@example.com', 'admin')
+                'admin', 'admin@elearn.com', 'admin')
             self.stdout.write(self.style.SUCCESS('Created admin superuser'))
 
         # Create teacher user
