@@ -1,0 +1,18 @@
+{% extends "base_with_sidebar.html" %}
+
+{% block content %}
+<h3>NaMe: {{ profile.public_name }}</h3>
+
+<p><strong>User Group:</strong>
+  {{ profile.user_groups_csv }}
+</p>
+
+<p><strong>Status:</strong>
+  {{ profile.public_status|default:"No information provided." }}
+</p>
+
+<p><strong>Bio:</strong>
+  {{ profile.public_bio|default:"No information provided." }}
+</p>
+
+{% endblock %}
