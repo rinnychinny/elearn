@@ -29,13 +29,14 @@
 </div>
 
 <script>
-  const roomName = "{{ room.name|escapejs }}";
+  //const roomName = "{{ room.name|escapejs }}";
+  const roomId = "{{ room.id }}"; 
 
   // Use secure WebSocket if protocol is https
   const wsProtocol = window.location.protocol === 'https:' ? 'wss://' : 'ws://';
 
   const chatSocket = new WebSocket(
-    wsProtocol + window.location.host + '/ws/chat/' + roomName + '/'
+    wsProtocol + window.location.host + '/ws/chat/' + roomId + '/'
   );
 
   const chatLog = document.querySelector('#chat-log');

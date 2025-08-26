@@ -1,3 +1,5 @@
+from django.shortcuts import redirect
+from django.views.generic.detail import DetailView
 from .models import ChatRoom, ChatMessage
 from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView
@@ -25,17 +27,18 @@ class ChatRoomListView(LoginRequiredMixin, ListView):
 class ChatRoomDetailView(LoginRequiredMixin, DetailView):
     model = ChatRoom
     template_name = 'chat/room.html'
-    slug_field = 'name'
-    slug_url_kwarg = 'room_name'
+    pk_url_kwarg = 'room_id'
     context_object_name = 'room'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         user = self.request.user
         context['is_member'] = user in self.object.members.all()
-        # Pass all messages for this room, ordered by time
+        # Pass all messages for this room, ordered by timestamp
         context['messages'] = ChatMessage.objects.filter(
             room=self.object).order_by('timestamp')
+        # Pass room_id explicitly for use in template
+        context['room_id'] = self.object.id
         return context
 
     def post(self, request, *args, **kwargs):
@@ -48,7 +51,7 @@ class ChatRoomDetailView(LoginRequiredMixin, DetailView):
         elif action == 'unsubscribe':
             self.object.members.remove(user)
 
-        return redirect('chat:chat_room', room_name=self.object.name)
+        return redirect('chat:chat_room', room_id=self.object.id)
 
 
 class ChatCreateOrRedirectView(LoginRequiredMixin, View):
@@ -57,10 +60,11 @@ class ChatCreateOrRedirectView(LoginRequiredMixin, View):
         if not room_name:
             return redirect('chat:chat_index')
 
-        # Check if room exists
+        # Check if room exists by name
         room = ChatRoom.objects.filter(name=room_name).first()
         if room:
-            return redirect('chat:chat_room', room_name=room_name)
+            # Redirect using numeric room_id for routing
+            return redirect('chat:chat_room', room_id=room.id)
 
         # Room doesn't exist, render confirmation page to create
         return render(request, 'chat/create_confirm.html', {'room_name': room_name})
@@ -68,8 +72,13 @@ class ChatCreateOrRedirectView(LoginRequiredMixin, View):
 
 class ChatCreateConfirmView(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
-        room_name = request.POST.get('room_name').strip()
-        # Create the room
+        room_name = request.POST.get('room_name', '').strip()
+
+        # Create or get room by name
         room, created = ChatRoom.objects.get_or_create(name=room_name)
+
+        # Add current user as member
         room.members.add(request.user)
-        return redirect('chat:chat_room', room_name=room_name)
+
+        # Redirect using the numeric room ID URL
+        return redirect('chat:chat_room', room_id=room.id)
