@@ -1,18 +1,27 @@
 {% extends "base_with_sidebar.html" %}
 
 {% block content %}
-<h3>NaMe: {{ profile.public_name }}</h3>
+<div class="container mt-4">
+  <h3 class="mb-3">Name: {{ profile.public_name }}</h3>
 
-<p><strong>User Group:</strong>
-  {{ profile.user_groups_csv }}
-</p>
+<div class="mb-3">
+  <strong>User Groups:</strong>
+  {% for group in profile.user_groups %}
+    <span class="badge bg-primary me-1">{{ group }}</span>
+  {% empty %}
+    <span>None</span>
+  {% endfor %}
+</div>
 
-<p><strong>Status:</strong>
-  {{ profile.public_status|default:"No information provided." }}
-</p>
+<div class="mb-3">
+<strong>Status:</strong>
+<p>{{ profile.public_status|default:"No information provided." }}</p>
+</div>
 
-<p><strong>Bio:</strong>
-  {{ profile.public_bio|default:"No information provided." }}
-</p>
-
+<div class="mb-3">
+<strong>Bio:</strong>
+<p>{{ profile.public_bio|default:"No information provided." }}</p>
+</div>
+</div>
 {% endblock %}
+
