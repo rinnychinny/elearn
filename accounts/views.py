@@ -96,8 +96,25 @@ class NotificationListView(LoginRequiredMixin, ListView):
     model = Notification
     template_name = "accounts/notifications.html"
     context_object_name = "notifications"
-    paginate_by = 20
 
     def get_queryset(self):
         # Return notifications for current user, newest first
         return Notification.objects.filter(user=self.request.user).order_by('-created_at')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Add unread notifications
+        context['unread_notifications'] = context['notifications'].filter(
+            read=False)
+        # Add read notifications
+        context['read_notifications'] = context['notifications'].filter(
+            read=True)
+        return context
+
+
+@login_required
+def mark_notification_read(request, pk):
+    notification = get_object_or_404(Notification, pk=pk, user=request.user)
+    notification.read = True
+    notification.save()
+    return redirect('accounts:notifications')

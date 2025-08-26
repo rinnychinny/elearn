@@ -3,13 +3,17 @@
 {% block body_content %}
 <div class="container-fluid">
     <div class="row">
-        <nav class="col-md-3 col-lg-2 bg-light sidebar vh-100 p-3">
+        <!-- Sidebar: full width on xs, ~33% width on sm, 25% on md, 16.67% on lg -->
+        <nav class="col-12 col-sm-4 col-md-3 col-lg-2 bg-light sidebar vh-100 p-3">
             {% include "sidebar.html" %}
         </nav>
-        <main class="col-md-9 col-lg-10 px-4 py-3">
+
+        <!-- Main content: full width on xs, ~66% width on sm, 75% on md, 83.33% on lg -->
+        <main class="col-12 col-sm-8 col-md-9 col-lg-10 px-4 py-3">
             {% block content %}
             {% endblock %}
         </main>
     </div>
 </div>
 {% endblock %}
+

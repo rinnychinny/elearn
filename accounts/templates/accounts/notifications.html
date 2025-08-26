@@ -1,0 +1,40 @@
+{% extends "base_with_sidebar.html" %}
+
+{% block content %}
+  <h2>Your Notifications</h2>
+
+  <h3>Unread Notifications</h3>
+  {% if unread_notifications %}
+    <ul class="list-group mb-4">
+      {% for notification in unread_notifications %}
+        <li class="list-group-item list-group-item-warning d-flex justify-content-between align-items-center">
+            <span>{{ notification.message }}</span>
+            <small class="text-muted">{{ notification.created_at|date:"SHORT_DATETIME_FORMAT" }}</small>
+          <form method="post" action="{% url 'accounts:mark_notification_read' notification.pk %}" style="margin:0;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-sm btn-outline-primary">Mark as read</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No unread notifications</p>
+  {% endif %}
+
+  <h3>Read Notifications</h3>
+  {% if read_notifications %}
+    <ul class="list-group">
+      {% for notification in read_notifications %}
+        <li class="list-group-item">
+            {{ notification.message }}
+            <br>
+            <small class="text-muted">{{ notification.created_at|date:"SHORT_DATETIME_FORMAT" }}</small>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No read notifications yet</p>
+  {% endif %}
+
+{% endblock %}
+

@@ -15,7 +15,9 @@ from django.views.generic.edit import DeleteView
 from .models import Course, Material, CourseFeedback, Enrollment
 from .forms import CourseForm, MaterialForm, CourseFeedbackForm
 
-from .tasks import notify_teacher_of_enrollment
+from .tasks import (notify_teacher_of_enrollment,
+                    notify_students_new_material)
+
 
 # Mixin to limit access to users in 'teacher' group
 
@@ -161,7 +163,12 @@ class MaterialCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView):
     def form_valid(self, form):
         course = get_object_or_404(Course, id=self.kwargs['course_id'])
         form.instance.course = course
-        return super().form_valid(form)
+        response = super().form_valid(form)
+
+        # Call the celery task asynchronously
+        notify_students_new_material.delay(course.id, self.object.title)
+
+        return response
 
 
 class MaterialDeleteView(LoginRequiredMixin, TeacherRequiredMixin, DeleteView):
