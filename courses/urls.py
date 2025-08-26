@@ -1,5 +1,16 @@
 from django.urls import path
-from .views import CourseCreateView, CourseListView, CourseDetailView, MaterialCreateView, MaterialDeleteView, MaterialMoveView, EnrollView, DisenrollView, FeedbackCreateView
+from .views import (CourseCreateView,
+                    CourseListView,
+                    CourseDetailView,
+                    MaterialCreateView,
+                    MaterialDeleteView,
+                    MaterialMoveView,
+                    EnrollView,
+                    DisenrollView,
+                    FeedbackCreateView,
+                    BlockStudentView,
+                    UnblockStudentView)
+
 from django.views.generic import RedirectView
 
 app_name = 'courses'
@@ -32,6 +43,11 @@ urlpatterns = [
          MaterialDeleteView.as_view(), name='material_delete'),
     path('materials/<int:material_id>/move/<str:direction>/',
          MaterialMoveView.as_view(), name='move_material'),
+
+    path('block_student/<int:enrollment_id>/',
+         BlockStudentView.as_view(), name='block_student'),
+    path('unblock_student/<int:enrollment_id>/',
+         UnblockStudentView.as_view(), name='unblock_student'),
 
 
 

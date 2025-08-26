@@ -14,8 +14,13 @@ class Course(models.Model):
         User, related_name='courses_teaching', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
     enrolled_users = models.ManyToManyField(
-        User, blank=True, related_name='courses_enrolled')
+        User,
+        through='Enrollment',
+        related_name='courses_enrolled',
+        blank=True,
+    )
 
     def save(self, *args, **kwargs):
         # automatically add creator as a collaborator when saving on newly created
@@ -66,3 +71,16 @@ class CourseFeedback(models.Model):
 
     def __str__(self):
         return f"{self.user} feedback for {self.course}"
+
+
+class Enrollment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    blocked = models.BooleanField(default=False)
+    enrolled_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'course')
+
+    def __str__(self):
+        return f"{self.user.username} enrolled in {self.course.title}"

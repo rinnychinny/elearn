@@ -4,14 +4,17 @@ from django.contrib import messages
 
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404, redirect
-from django.http import Http404
+from django.http import Http404, HttpResponseForbidden
+from django.utils.decorators import method_decorator
 
 from django.views import View
 from django.views.generic import CreateView, ListView, DetailView
+from django.views.decorators.csrf import csrf_protect
 
 from django.views.generic.edit import DeleteView
-from .models import Course, Material, CourseFeedback
+from .models import Course, Material, CourseFeedback, Enrollment
 from .forms import CourseForm, MaterialForm, CourseFeedbackForm
+
 
 # Mixin to limit access to users in 'teacher' group
 
@@ -45,8 +48,12 @@ class CourseListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         user = self.request.user
 
-        # All courses available (could be filtered as needed)
-        context['all_courses'] = Course.objects.all()
+        # Courses the user is enrolled in
+        context['enrolled_courses'] = user.courses_enrolled.all()
+
+        # All other courses available
+        context['all_courses'] = Course.objects.exclude(
+            id__in=user.courses_enrolled.values_list('id', flat=True))
 
         # Courses the user created
         context['created_courses'] = Course.objects.filter(creator=user)
@@ -55,9 +62,6 @@ class CourseListView(LoginRequiredMixin, ListView):
         context['collaborating_courses'] = Course.objects.filter(
             collaborators=user
         ).exclude(creator=user)
-
-        # Courses the user is enrolled in
-        context['enrolled_courses'] = user.courses_enrolled.all()
 
         return context
 
@@ -110,7 +114,8 @@ class CourseDetailView(LoginRequiredMixin, DetailView):
         context['course_creator'] = course.creator
         context['course_collaborators'] = course.collaborators.all()
         context['materials'] = course.materials.order_by('order')
-        context['students'] = course.enrolled_users.all()
+        # context['students'] = course.enrolled_users.all()
+        context['students'] = Enrollment.objects.filter(course=course)
 
         # course review data
         feedback = course.feedbacks.select_related(
@@ -231,3 +236,33 @@ class FeedbackCreateView(LoginRequiredMixin, View):
         messages.error(
             request, "Please correct the errors in your feedback form.")
         return redirect("courses:course_detail", course_id=course_id, section='feedback')
+
+
+@method_decorator(csrf_protect, name='dispatch')
+class BlockStudentView(TeacherRequiredMixin, View):
+
+    def post(self, request, enrollment_id):
+        enrollment = get_object_or_404(Enrollment, id=enrollment_id)
+
+        # Ensure request.user has permission (TeacherRequiredMixin helps here. Add checks if needed.)
+        if request.user not in enrollment.course.collaborators.all() and request.user != enrollment.course.creator:
+            return HttpResponseForbidden("Not authorized")
+
+        enrollment.blocked = True
+        enrollment.save()
+        return redirect('courses:course_detail_section', course_id=enrollment.course.id, section='teacher_area')
+
+
+@method_decorator(csrf_protect, name='dispatch')
+class UnblockStudentView(TeacherRequiredMixin, View):
+
+    def post(self, request, enrollment_id):
+        enrollment = get_object_or_404(Enrollment, id=enrollment_id)
+
+        # Permission check
+        if request.user not in enrollment.course.collaborators.all() and request.user != enrollment.course.creator:
+            return HttpResponseForbidden("Not authorized")
+
+        enrollment.blocked = False
+        enrollment.save()
+        return redirect('courses:course_detail_section', course_id=enrollment.course.id, section='teacher_area')
