@@ -11,6 +11,6 @@ urlpatterns = [
     path('<int:room_id>/', ChatRoomDetailView.as_view(), name='chat_room'),
     path('create-or-redirect/', ChatCreateOrRedirectView.as_view(),
          name='create_or_redirect'),
-    path('create-confirm/<int:room_id>/',
+    path('create-confirm/',
          ChatCreateConfirmView.as_view(), name='create_confirm'),
 ]
