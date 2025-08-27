@@ -3,7 +3,7 @@ from django.dispatch import receiver
 from django.contrib.auth.models import User
 from .models import UserProfile
 
-# use this signal to create additional User Profile when User is created
+# creates additional User Profile when User is created
 
 
 @receiver(post_save, sender=User)
