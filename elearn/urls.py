@@ -16,6 +16,8 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('courses/', include('courses.urls')),  # course urls
     path('chat/', include('chat.urls')),  # chat urls
+    path('api/', include('api.urls')),
+
 ]
 
 # Serve local media files ONLY in local filesystem mode
