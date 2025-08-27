@@ -2,8 +2,16 @@
 from django.test.utils import override_settings
 import pytest
 from django.contrib.auth import get_user_model
+from rest_framework.test import APIClient
+from courses.models import Course
 
 User = get_user_model()
+
+
+@pytest.fixture
+def api():
+    from rest_framework.test import APIClient
+    return APIClient()
 
 
 @pytest.fixture(autouse=True)
@@ -41,3 +49,14 @@ def create_user(db):
         return user
 
     return make_user
+
+
+@pytest.fixture
+def course_factory(db, create_user):
+    def make(title, creator=None, description="desc"):
+        creator = creator or create_user(
+            f"creator_{title}", public_name=f"{title} Teacher")
+        c = Course.objects.create(
+            title=title, description=description, creator=creator)
+        return c
+    return make
