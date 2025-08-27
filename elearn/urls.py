@@ -18,7 +18,9 @@ urlpatterns = [
     path('chat/', include('chat.urls')),  # chat urls
 ]
 
-# for hosting files on the Django server in debug
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
+# Serve local media files ONLY in local filesystem mode
+if settings.DEBUG and getattr(settings, "MEDIA_URL", "")[:1] == "/":
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=getattr(settings, "MEDIA_ROOT", None),
+    )
