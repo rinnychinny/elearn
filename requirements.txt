@@ -7,6 +7,8 @@ crispy-bootstrap5==2025.6
 daphne==4.2.1
 dj-database-url==3.0.1
 django-storages==1.14.6
+drf-spectacular==0.28.0
+drf-spectacular-sidecar==2025.8.1
 factory-boy==3.3.3
 git-filter-repo==2.47.0
 importlib-metadata==8.0.0
