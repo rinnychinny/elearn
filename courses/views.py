@@ -238,12 +238,12 @@ class FeedbackCreateView(LoginRequiredMixin, View):
         # must be enrolled
         if not course.enrolled_users.filter(pk=request.user.pk).exists():
             messages.error(request, "You must be enrolled to leave feedback.")
-            return redirect("courses:course_detail", course_id=course_id, section='feedback')
+            return redirect("courses:course_detail_section", course_id=course_id, section='feedback')
 
         # only one feedback per user per course
         if CourseFeedback.objects.filter(course=course, user=request.user).exists():
             messages.info(request, "You’ve already reviewed this course.")
-            return redirect("courses:course_detail", course_id=course_id, section='feedback')
+            return redirect("courses:course_detail_section", course_id=course_id, section='feedback')
 
         # Bind and then validate the form
         form = CourseFeedbackForm(
@@ -251,12 +251,12 @@ class FeedbackCreateView(LoginRequiredMixin, View):
         if form.is_valid():
             form.save()
             messages.success(request, "Thanks for your feedback!")
-            return redirect("courses:course_detail", course_id=course_id, section='feedback')
+            return redirect("courses:course_detail_section", course_id=course_id, section='feedback')
 
         # If invalid, show a generic message and bounce back
         messages.error(
             request, "Please correct the errors in your feedback form.")
-        return redirect("courses:course_detail", course_id=course_id, section='feedback')
+        return redirect("courses:course_detail_section", course_id=course_id, section='feedback')
 
 
 @method_decorator(csrf_protect, name='dispatch')
