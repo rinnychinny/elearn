@@ -1,14 +1,16 @@
+from conftest import no_pagination
 import pytest
 from django.contrib.auth import get_user_model
 from courses.models import Course, Enrollment, Material
 
 User = get_user_model()
 
+
 # Tests: Public course list / detail ----------
 
 
 @pytest.mark.django_db
-def test_public_course_list(api, create_user, course_factory):
+def test_public_course_list(api, create_user, course_factory, no_pagination):
     user = create_user("any", public_name="Any")
     api.force_authenticate(user=user)
 
@@ -16,9 +18,14 @@ def test_public_course_list(api, create_user, course_factory):
     course_factory("Web Sockets")
 
     resp = api.get("/api/courses/")
-    assert resp.status_code == 200
+    assert resp.status_code == 200, f"Unexpected status code: {resp.status_code}, content: {resp.content}"
+
     items = resp.json()
+    if isinstance(items, dict) and "results" in items:
+        items = items["results"]
+
     titles = {it["title"] for it in items}
+
     assert {"Django 101", "Web Sockets"} <= titles
 
     first = items[0]

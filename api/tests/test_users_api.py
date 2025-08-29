@@ -15,6 +15,9 @@ def test_public_list_exposes_only_safe_fields(create_user):
     resp = client.get("/api/users/")
     assert resp.status_code == 200
     data = resp.json()
+    if isinstance(data, dict) and "results" in data:
+        data = data["results"]
+
     # At least two users
     assert any(item["profile"]["public_name"] == "Alice" for item in data)
     # Ensure sensitive fields are NOT exposed
