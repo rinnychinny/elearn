@@ -10,10 +10,8 @@ Async Django application for e‑learning with PostgreSQL, Redis, Celery, and op
 - [Prerequisites](#prerequisites)
 - [Quick Start (Local)](#quick-start-local)
 - [Environment Variables](#environment-variables)
-- [Database & Migrations](#database--migrations)
 - [Running the App](#running-the-app)
 - [Background Tasks (Celery)](#background-tasks-celery)
-- [Fixtures & Sample Data](#fixtures--sample-data)
 - [Testing](#testing)
 - [Common Issues](#common-issues)
 - [Deployment Notes](#deployment-notes)
@@ -81,12 +79,17 @@ pip install -r requirements.txt
 # Create .env file
 Create .env file with the sample variables and insert correct values for your environment.
 
-# Setup DB
-createdb elearn_db
+# Setup postgres DB
+# run this script with postgres superuser
+# elearn_db and elearn _app creation and priveleges
+sudo -u postgres psql -f ./postgres_init.sql
+
+# Some Django DB setup - migrations/superuser/user groups
 python manage.py migrate
 python manage.py createsuperuser
+python manage.py users_init #django user group and user initialisation
 
-# Start Redis and Postgres locally
+# Ensure Redis and Postgres running locally
 
 # Run app (ASGI)
 python manage.py runserver
@@ -127,12 +130,6 @@ AWS_STORAGE_BUCKET_NAME=elearn-media-bucket
 AWS_S3_REGION_NAME=eu-north-1
 ```
 
-## Database & Migrations
-```bash
-python manage.py migrate
-python manage.py createsuperuser
-```
-
 ## Running the App
 Run with Daphne:
 ```bash
@@ -142,12 +139,6 @@ daphne -b 0.0.0.0 -p 8000 elearn.asgi:application
 ## Background Tasks (Celery)
 ```bash
 celery -A elearn worker -l info
-celery -A elearn beat -l info
-```
-
-## Fixtures & Sample Data
-```bash
-python manage.py loaddata db.json
 ```
 
 ## Testing
