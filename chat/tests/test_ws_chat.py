@@ -1,4 +1,4 @@
-# chat/tests/test_ws_chat.py
+
 import asyncio
 import pytest
 from asgiref.sync import sync_to_async

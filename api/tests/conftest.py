@@ -1,4 +1,4 @@
-# api/tests/conftest.py
+
 from django.test.utils import override_settings
 import pytest
 from django.contrib.auth import get_user_model

@@ -37,26 +37,6 @@ CHANNEL_LAYERS = {
     },
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'elearn_db',
-#         'USER': 'elearn_app',
-#         'PASSWORD': 'elearn_app',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
-# CHANNEL_LAYERS = {
-#     'default': {
-#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
-#         'CONFIG': {
-#             'hosts': [('127.0.0.1', 6379)],
-#         },
-#     },
-# }
-
-
 CELERY_BROKER_URL = "redis://localhost:6379/0"
 CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
 CELERY_TIMEZONE = "UTC"
@@ -216,10 +196,10 @@ LOGGING = {
     'loggers': {
         '': {  # Root logger
             'handlers': ['console'],
-            'level': 'INFO',  # Set this to DEBUG to see debug logs
+            'level': 'INFO',  # Set to DEBUG to see debug logs
             'propagate': True,
         },
-        '__main__': {  # or your app/module name if you want to be specific
+        '__main__': {
             'handlers': ['console'],
             'level': 'DEBUG',
             'propagate': False,
