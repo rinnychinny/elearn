@@ -125,6 +125,8 @@ class CourseDetailView(LoginRequiredMixin, DetailView):
         context['course_collaborators'] = course.collaborators.all()
         context['materials'] = course.materials.order_by('order')
         context['students'] = Enrollment.objects.filter(course=course)
+        is_creator = (course.creator.id == user.id)
+        context['can_edit_materials'] = is_creator
 
         # course review data
         feedback = course.feedbacks.select_related(

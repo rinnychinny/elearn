@@ -14,7 +14,7 @@
         {% else %}
             <a href="{{ material.content.url }}" target="_blank" class="btn btn-primary btn-sm me-2">View</a>
         {% endif %}
-        {% if roles.teacher %}
+        {% if roles.teacher and can_edit_materials %}
             <a href="{% url 'courses:material_delete' material.id %}" class="btn btn-danger btn-sm me-2">Delete</a>
             <a href="{% url 'courses:move_material' material.id 'up' %}" class="btn btn-secondary btn-sm me-1">&#8593;</a>
             <a href="{% url 'courses:move_material' material.id 'down' %}" class="btn btn-secondary btn-sm">&#8595;</a>

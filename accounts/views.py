@@ -1,15 +1,14 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Notification
 from django.views.generic.list import ListView
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import Group
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login
 from django.shortcuts import render, redirect
 
 from .forms import UserProfileForm
-from .models import UserProfile
+from .models import UserProfile, Notification
 
 
 def student_register(request):

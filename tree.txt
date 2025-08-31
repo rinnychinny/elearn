@@ -1,0 +1,643 @@
+.
+(0tqq (B.env
+(0tqq (B.git
+(0x   tqq (BCOMMIT_EDITMSG
+(0x   tqq (BFETCH_HEAD
+(0x   tqq (BHEAD
+(0x   tqq (BORIG_HEAD
+(0x   tqq (Bbranches
+(0x   tqq (Bconfig
+(0x   tqq (Bdescription
+(0x   tqq (Bfilter-repo
+(0x   x   tqq (Balready_ran
+(0x   x   tqq (Bchanged-refs
+(0x   x   tqq (Bcommit-map
+(0x   x   tqq (Bfirst-changed-commits
+(0x   x   tqq (Bref-map
+(0x   x   mqq (Bsuboptimal-issues
+(0x   tqq (Bhooks
+(0x   x   tqq (Bapplypatch-msg.sample
+(0x   x   tqq (Bcommit-msg.sample
+(0x   x   tqq (Bfsmonitor-watchman.sample
+(0x   x   tqq (Bpost-update.sample
+(0x   x   tqq (Bpre-applypatch.sample
+(0x   x   tqq (Bpre-commit.sample
+(0x   x   tqq (Bpre-merge-commit.sample
+(0x   x   tqq (Bpre-push.sample
+(0x   x   tqq (Bpre-rebase.sample
+(0x   x   tqq (Bpre-receive.sample
+(0x   x   tqq (Bprepare-commit-msg.sample
+(0x   x   tqq (Bpush-to-checkout.sample
+(0x   x   tqq (Bsendemail-validate.sample
+(0x   x   mqq (Bupdate.sample
+(0x   tqq (Bindex
+(0x   tqq (Binfo
+(0x   x   tqq (Bexclude
+(0x   x   mqq (Brefs
+(0x   tqq (Blogs
+(0x   x   tqq (BHEAD
+(0x   x   mqq (Brefs
+(0x   x       tqq (Bheads
+(0x   x       x   tqq (Bbackup-main
+(0x   x       x   mqq (Bmain
+(0x   x       mqq (Bremotes
+(0x   x           mqq (Borigin
+(0x   x               mqq (Bmain
+(0x   tqq (Bobjects
+(0x   x   tqq (B01
+(0x   x   x   mqq (B97e0162d4a80f8e13add36a88998125cf55ece
+(0x   x   tqq (B06
+(0x   x   x   mqq (B9e6ba1255a6b62c199559ce6633eb3aad4694f
+(0x   x   tqq (B07
+(0x   x   x   tqq (B01ece50d23646b2646c1b10daacc1852587a40
+(0x   x   x   mqq (Bdc07cee495ce8028e0fa1eb4ca9f7bc5336b83
+(0x   x   tqq (B08
+(0x   x   x   mqq (B9ac9239f3975606cfede8c76b05426ae899acc
+(0x   x   tqq (B09
+(0x   x   x   tqq (B15d590d42dda49317970745c7d475040c4e942
+(0x   x   x   tqq (B536d856e919a43397bb715639fc3fdceeda2cf
+(0x   x   x   tqq (B7de19512378a1981899b2a47d76b522111107e
+(0x   x   x   mqq (Bd92073bd24def126f477de4cbbf230ce488a3e
+(0x   x   tqq (B0b
+(0x   x   x   tqq (B6500d33d1a41e913b5a8153ffa040b1084f6f5
+(0x   x   x   mqq (B9c5fee2e0a5cd0888fe76ceb49f7476e6578fd
+(0x   x   tqq (B0c
+(0x   x   x   mqq (B1cb1079ea7ca31d90472f9e1dbbc45165336d2
+(0x   x   tqq (B0d
+(0x   x   x   mqq (B519db1eed0792cd6537272d4adc63fe8add9af
+(0x   x   tqq (B0e
+(0x   x   x   mqq (Baa76f5d94a6ddd8907bd09cdf4e51b8b60a68b
+(0x   x   tqq (B10
+(0x   x   x   tqq (Bcdcac4407d6c5dc69a41eb4bf2e336070f71e7
+(0x   x   x   mqq (Be5f02025eca7ee9e2e78d9856538b30ee292be
+(0x   x   tqq (B12
+(0x   x   x   tqq (B7700635ce2dccf531fff4158c4c773460e7f35
+(0x   x   x   mqq (B9eafedbcec413462c60d49fee101046a94fd50
+(0x   x   tqq (B13
+(0x   x   x   mqq (B9ebd3d202faa81067d1d5510746e05bc510499
+(0x   x   tqq (B14
+(0x   x   x   mqq (Bb1c7f2e25ea6f6da96845ef2219fda416566a0
+(0x   x   tqq (B15
+(0x   x   x   tqq (B5985e30dcbc13222e0586ef5d2bcd942ff85ac
+(0x   x   x   mqq (B64a340e7707bfc2f26b6b7e544b8f145847303
+(0x   x   tqq (B16
+(0x   x   x   tqq (B851ec2f236db0617e256f01ef07d20d623a354
+(0x   x   x   mqq (B9613a512675375eb991fe4cbbade08ac4ad5ed
+(0x   x   tqq (B1c
+(0x   x   x   mqq (Be4beb7b22cfa45c04eff5e00c5dcad18da2f11
+(0x   x   tqq (B1d
+(0x   x   x   tqq (Bbc9eeb00c7684ca3363da65ac767e712734438
+(0x   x   x   tqq (Bd6cc91232dca47eb2eec761592a79cc8b0907b
+(0x   x   x   mqq (Be7a72eca849e156660b619dfcfbbb878e08d8d
+(0x   x   tqq (B1f
+(0x   x   x   mqq (Be3b733be14ac266359bddfcfda5419c44cc44a
+(0x   x   tqq (B22
+(0x   x   x   mqq (B11911e167d7aaea1684cd1d141b97d6f32b09d
+(0x   x   tqq (B23
+(0x   x   x   mqq (B120486a26d18f27e22afd23cd7b1417e2cc031
+(0x   x   tqq (B29
+(0x   x   x   tqq (B3da651a490bf38e085d160165ca60e2b49c949
+(0x   x   x   mqq (B8678119d6f2f409d46f7ae043a66c7c2ddcae6
+(0x   x   tqq (B2a
+(0x   x   x   mqq (Bea7daf6ef34c4a385828ac9d02ee54e184aabc
+(0x   x   tqq (B2b
+(0x   x   x   mqq (B14c7489944474a0265f60bd3f52af2308db3c3
+(0x   x   tqq (B2d
+(0x   x   x   mqq (B85a353e0857a109b3ae97b10c6dd26cd0335b3
+(0x   x   tqq (B2f
+(0x   x   x   tqq (B3d359f438440abd7d19f2c5a0c927d0675f17f
+(0x   x   x   mqq (Bc5dd8633a3a99fb976e2f45f713d1dc56b5915
+(0x   x   tqq (B30
+(0x   x   x   mqq (Bd24382cb97e55929f5ac4b5ee4245a278d8649
+(0x   x   tqq (B32
+(0x   x   x   tqq (B1b1cfa4671f12d002d9a24fcb29d38e8f04deb
+(0x   x   x   mqq (Bdde76801b4dbdde963b9ce37160b16932930e8
+(0x   x   tqq (B35
+(0x   x   x   mqq (B8d048a49377e691492cfb153e937ede5299376
+(0x   x   tqq (B37
+(0x   x   x   mqq (B566b0ffd65af85f7737550a396a7487b8e5686
+(0x   x   tqq (B39
+(0x   x   x   mqq (Bba371dbbddb2ab743df9cc350b169562c1ec8b
+(0x   x   tqq (B3b
+(0x   x   x   mqq (B3199f415dda1349fcc88430796a63a7d1321b1
+(0x   x   tqq (B3e
+(0x   x   x   mqq (Baac8511bd09202f81a2cb76ad027eeb8ceb843
+(0x   x   tqq (B43
+(0x   x   x   tqq (B34ba10e2d9090616280c6b28235c3fbdfb9534
+(0x   x   x   mqq (Bffbdd9d3ac5468add9987e02445933b29b5665
+(0x   x   tqq (B45
+(0x   x   x   tqq (B202e9ee49e342e8e761990705bc1b889451c88
+(0x   x   x   mqq (B48b3c56f3f8bdda315646ded92df44bf5f8ae6
+(0x   x   tqq (B47
+(0x   x   x   mqq (B0c13dd2ac5377a3653444d54a424610d8658a9
+(0x   x   tqq (B48
+(0x   x   x   mqq (Baa1e3ec539b1d712484c906de08d89f712f884
+(0x   x   tqq (B4d
+(0x   x   x   mqq (B22d885b9faee31910c69ac6bf2ad17b357c2ee
+(0x   x   tqq (B51
+(0x   x   x   tqq (B6d366707eba560d26be985bbeb10c0a72e5696
+(0x   x   x   mqq (Becc3969160b0f69eb246d4380de46b6e94f4ea
+(0x   x   tqq (B52
+(0x   x   x   mqq (Bd8378a1862a66539d73655a8146f20f0db80aa
+(0x   x   tqq (B53
+(0x   x   x   mqq (B30f21a0cee2f50cc88007cdafd38d7f1fa7c2b
+(0x   x   tqq (B54
+(0x   x   x   mqq (B370e4b2dfeee4e7cc07713747d6b40ba0ed9a8
+(0x   x   tqq (B55
+(0x   x   x   mqq (B6892eda1f5c28b38561c3078d280dadfbb7e25
+(0x   x   tqq (B56
+(0x   x   x   mqq (Bb39802563cebc7e91116da30f2d8bed65f34f4
+(0x   x   tqq (B5a
+(0x   x   x   mqq (B29fba8d6aae03a16710ab7c0440a47166f5814
+(0x   x   tqq (B5d
+(0x   x   x   mqq (B78c5826c3573c114745949ac9555c0128d223c
+(0x   x   tqq (B64
+(0x   x   x   tqq (B796e0ed98eb99fa5e40572f98fbe0e036de6c6
+(0x   x   x   mqq (Bf8717434c7842432d67374b80494422c1fe51f
+(0x   x   tqq (B65
+(0x   x   x   mqq (B612f724f3868e48b2b582b8efb09533d9843d2
+(0x   x   tqq (B66
+(0x   x   x   mqq (B656fd29b2cc651c92dc03b2eaf6ef9a4397df0
+(0x   x   tqq (B67
+(0x   x   x   mqq (B345fa1f825518db75d1bdcfd1919bacfef8005
+(0x   x   tqq (B68
+(0x   x   x   mqq (B0efb5b6ec79a6e0eabc6cd7b816da579ca5892
+(0x   x   tqq (B69
+(0x   x   x   mqq (B79efc62824dd51568e6104c7fcb5b49f2f82ef
+(0x   x   tqq (B6a
+(0x   x   x   mqq (B72ea956b7c39e4d3d26aa40f52aad66abcfb4d
+(0x   x   tqq (B6b
+(0x   x   x   mqq (Bf1dc2389c4a46e3b91403fc20a760be04bd367
+(0x   x   tqq (B6c
+(0x   x   x   mqq (B2e95f08d222091479ff7632b76e6dc9788ae50
+(0x   x   tqq (B6e
+(0x   x   x   mqq (Bc6825439c566e54b21adcb279ffd4d164dda5f
+(0x   x   tqq (B6f
+(0x   x   x   tqq (B2d61c3dbd21ed919d8e1b494877fe45ebd70c3
+(0x   x   x   mqq (Bd95a626b1ebf89a7f813c945af1932a5f9cb03
+(0x   x   tqq (B70
+(0x   x   x   mqq (B65183a2839b90540d54ae4b9cf38299a21ad6b
+(0x   x   tqq (B71
+(0x   x   x   mqq (B90551616fba180673c5a2baab3200ac991a0a8
+(0x   x   tqq (B73
+(0x   x   x   tqq (B3cf4bbb5acea69449f13684ad86cb4ed326a73
+(0x   x   x   tqq (B6739b276ba90c87187f3f45ce8041da11c70ed
+(0x   x   x   mqq (Be735b2fba8a9f05cf87f4c32d096a840c8e3da
+(0x   x   tqq (B75
+(0x   x   x   tqq (B2f1789a6d2fee2c974e899f547ff71098ec3ab
+(0x   x   x   mqq (B4ce307c06d26b3cb7f9c27d6ace3aa1e6e795f
+(0x   x   tqq (B77
+(0x   x   x   tqq (B361393a82b62caae48650e1baf1f6cf1ff3ba0
+(0x   x   x   mqq (B93c38bf786be13e42e1474a1c6ed22618243f8
+(0x   x   tqq (B78
+(0x   x   x   mqq (B81f21ac7124e69fb83b2a8b4848537df6633d0
+(0x   x   tqq (B7c
+(0x   x   x   tqq (B566487c80ab0eb1e6c879f75fecc253fb1fe3b
+(0x   x   x   mqq (Bd609a879b8f9760e54028514dfd22c9aa4d04c
+(0x   x   tqq (B7d
+(0x   x   x   mqq (Bf3f34eee75e7a3e2de18b4beaaf11ea8f177c9
+(0x   x   tqq (B81
+(0x   x   x   tqq (B12c0f2487106c6b68e3a5dc571e2a789b716be
+(0x   x   x   mqq (Bbb378cbd6606442ad497cdae7385e79e763a63
+(0x   x   tqq (B82
+(0x   x   x   mqq (Bfead0ed38d2a75d9174aca19adb4e4b52d629f
+(0x   x   tqq (B87
+(0x   x   x   tqq (B66b2047d4a6ec37cd609fa0f12535579137fe6
+(0x   x   x   tqq (B9dfbbf2470949098bc3a2495cb1826b5c35e5e
+(0x   x   x   mqq (Bfe0fcfb1ec982e3e08164a096850b3df62a38d
+(0x   x   tqq (B88
+(0x   x   x   mqq (B27055d16dadaab345d97657575417fbacee731
+(0x   x   tqq (B8a
+(0x   x   x   tqq (B2ad6be230c35dc4bccc63fea229d37e53dce22
+(0x   x   x   tqq (B7227ddb95f2285a648535534641b2bc4b9e2dc
+(0x   x   x   mqq (B8646d8f0cb0cedf6c2e1ae5b55ac7383816b24
+(0x   x   tqq (B90
+(0x   x   x   mqq (Bb5343972ae4f698aafbfa2fd3d22b515f5dd44
+(0x   x   tqq (B91
+(0x   x   x   mqq (Bea44a218fbd2f408430959283f0419c921093e
+(0x   x   tqq (B92
+(0x   x   x   mqq (B9dad0ba8df6af8ded69ab18053562279bee2a6
+(0x   x   tqq (B93
+(0x   x   x   mqq (B392bc341efa6b1349e8e36a3cb2affa7e55fb9
+(0x   x   tqq (B94
+(0x   x   x   tqq (B5e541090af583b92973c0cd1d72daac449b3d0
+(0x   x   x   mqq (B9db3a90573ed4f5e9fb6caa22032bffbdd845a
+(0x   x   tqq (B96
+(0x   x   x   mqq (Bbcc94ec330dc4ec4a634029f6f01d53f0a38e0
+(0x   x   tqq (B98
+(0x   x   x   mqq (Bfa1784fee02f0d924a2aa7589ec73dec55903e
+(0x   x   tqq (B99
+(0x   x   x   mqq (B0f8645ceacf08756947075eb9b04c72cbc1398
+(0x   x   tqq (B9a
+(0x   x   x   tqq (B37efb3113ce7d27fcab8ea0c42a5d424beabb3
+(0x   x   x   mqq (B58b5652bcae903746193b9e7a60c78903c681c
+(0x   x   tqq (B9b
+(0x   x   x   mqq (Bb22242f70dd34d4274159abc053d1c8abb5db7
+(0x   x   tqq (B9d
+(0x   x   x   mqq (B1dcfdaf1a6857c5f83dc27019c7600e1ffaff8
+(0x   x   tqq (Ba0
+(0x   x   x   mqq (B9910fd6285ec0dfbc1cf955ad279e3c89946c3
+(0x   x   tqq (Ba2
+(0x   x   x   mqq (B2454eda5bc15ce13db9f8a262c96411bc41aff
+(0x   x   tqq (Ba3
+(0x   x   x   mqq (B18ed3736fb3372d72167ec73f196f9de2b591f
+(0x   x   tqq (Ba5
+(0x   x   x   mqq (Bf52c2e95473da96c3bf9891ba11949a4bd1b3a
+(0x   x   tqq (Ba8
+(0x   x   x   mqq (Bae1af023a80017349a6002472007a43f3bd8dc
+(0x   x   tqq (Baa
+(0x   x   x   mqq (B960f5316989deba7982c8c7e64d20c81c082dd
+(0x   x   tqq (Bab
+(0x   x   x   mqq (B3556defd9992bc95fa7bb1d3951d323ab385a9
+(0x   x   tqq (Bae
+(0x   x   x   mqq (B1c50dea4ef24491b473f8c435c1c6a60890d1a
+(0x   x   tqq (Baf
+(0x   x   x   mqq (B30f1d8de7b3c0d449c001a8e5e14a2780988fb
+(0x   x   tqq (Bb0
+(0x   x   x   mqq (B59972d32c3684f4d3d2e50caf95f6217579a4c
+(0x   x   tqq (Bb2
+(0x   x   x   mqq (B2db17e359add5fbe7347e0cadc3a1463a2cb13
+(0x   x   tqq (Bb3
+(0x   x   x   mqq (B9e39aee026b9365f7798379f29d5e8178a25a8
+(0x   x   tqq (Bb5
+(0x   x   x   tqq (B3c28e31ec369dfeb5f1b2a4ade1c7c9657312d
+(0x   x   x   mqq (Bde91473021a7b340d02e0e8928c3db885f88ba
+(0x   x   tqq (Bb8
+(0x   x   x   mqq (B453ecf632bb16dbc67d83d0ee52d2af08a91e2
+(0x   x   tqq (Bbb
+(0x   x   x   mqq (B7ed255e9111b16ec866a984d0d9bef90fe5ced
+(0x   x   tqq (Bbe
+(0x   x   x   mqq (B289e699d5b5da5fb9519ecedc178e5eeaa5089
+(0x   x   tqq (Bbf
+(0x   x   x   mqq (B78653946f3d402ebc1a516a5ae2e0b52b2a652
+(0x   x   tqq (Bc0
+(0x   x   x   mqq (B72abdbfcdfa097291f2e5b16698786ea17a576
+(0x   x   tqq (Bc2
+(0x   x   x   mqq (B4032fec7fb6783cf5410b62a8c973010832569
+(0x   x   tqq (Bc3
+(0x   x   x   mqq (Bcea6f9534f08a20ed8af954c74fd1042ac3ed4
+(0x   x   tqq (Bc4
+(0x   x   x   tqq (B0567389c5911267acbcc2738fef7736e5e7743
+(0x   x   x   tqq (B2b5a1d666831a0720f9e2070f8cbae09b8db64
+(0x   x   x   mqq (Bc13487bf241763bd01d3cf75ea5ee041edbf77
+(0x   x   tqq (Bc8
+(0x   x   x   mqq (B691632b024543094049a84c71c11b7da22f234
+(0x   x   tqq (Bc9
+(0x   x   x   mqq (B7cba552cf7107d484fccfb3bb40da1bd4050b9
+(0x   x   tqq (Bca
+(0x   x   x   mqq (Bfc5637ca3cf661e75675515d51b4edf88a0de0
+(0x   x   tqq (Bcb
+(0x   x   x   mqq (B09643a560bdbf5cbba5bfbcbf79f072cd3713c
+(0x   x   tqq (Bcf
+(0x   x   x   mqq (Ba813fbf3db917b4463ae221772c671abaa9ec8
+(0x   x   tqq (Bd0
+(0x   x   x   tqq (B163c3e1b93283b893be0cbf0faacc624be61e2
+(0x   x   x   tqq (B213fe32aa016e79e8f66e49551818b36bde04f
+(0x   x   x   mqq (B6e01e37d2acfab94aae9feb84967e46a6e2bb8
+(0x   x   tqq (Bd1
+(0x   x   x   tqq (B70e35d9d30bfc4e24865cf686e04050bf1daf7
+(0x   x   x   mqq (Bd0bb1690734a9940071acc7a1514a0260fbc5e
+(0x   x   tqq (Bd2
+(0x   x   x   tqq (B10449c4a488bb1e5dd18b915900a52b79a7dd3
+(0x   x   x   mqq (B3c18e129a7d7d754d8edb839578ea2e54cb1d3
+(0x   x   tqq (Bd6
+(0x   x   x   tqq (B6e243d429214560cbabcdb3b2de3e7636c8704
+(0x   x   x   mqq (Bbdb715f4127c84fe53693713db81c84cdd8a6c
+(0x   x   tqq (Bd7
+(0x   x   x   mqq (B5daaf4cf6f2a486c4d4b61f3713b3ed20bedff
+(0x   x   tqq (Bd8
+(0x   x   x   tqq (B6beff4e77f7dc40e12506e1e3fbfe9ce0f4cd5
+(0x   x   x   mqq (Bc29d12f8507cea9d606a016578ac0a2455b880
+(0x   x   tqq (Bd9
+(0x   x   x   mqq (Bf46f4d93902fd6a07b427bb16959c3db594027
+(0x   x   tqq (Bdc
+(0x   x   x   mqq (B1f28bca910e9aa10a0bdf385395f8cf2f8e1f9
+(0x   x   tqq (Bdd
+(0x   x   x   tqq (B199737864ee3a51773e2fc7d67d2946bb51836
+(0x   x   x   mqq (Bb705766b4e551ab4b8a269cd777456db6a2a10
+(0x   x   tqq (Bde
+(0x   x   x   tqq (B1a2481acf83937d139c4b6f0fd686632769300
+(0x   x   x   mqq (B25504699881c2269c0f37eef35d61982f88704
+(0x   x   tqq (Bdf
+(0x   x   x   mqq (B570040538a563e9c18a193e372db93d18fd6ad
+(0x   x   tqq (Be0
+(0x   x   x   mqq (Bfa961a1f0116329c991235f3e15c369101fda1
+(0x   x   tqq (Be1
+(0x   x   x   mqq (Be1cfce5296d01691eec0b2d46eef89f4b8fb9a
+(0x   x   tqq (Be4
+(0x   x   x   tqq (B1797bd06e969de1599b9d3c24dba3d3b357daa
+(0x   x   x   mqq (B36a90b050dbcb24d47dbe995ab994bacb98aa1
+(0x   x   tqq (Be8
+(0x   x   x   tqq (B120789b65ccd3353e7a2b586163ef5ab629c27
+(0x   x   x   mqq (B57cc64400797cf9803722711cdfd6687fdde2e
+(0x   x   tqq (Bea
+(0x   x   x   mqq (B1f43f4870a5017eb8ff9118d7d757384f18a82
+(0x   x   tqq (Beb
+(0x   x   x   mqq (B9790d59021b6fcbfe430dea1c9c6b8501d6d8a
+(0x   x   tqq (Bec
+(0x   x   x   mqq (B39348d9cf3077ad8366e43d4543cef284cd6ed
+(0x   x   tqq (Bed
+(0x   x   x   tqq (B6d486a0edbca0fb205618f0cb78fbb326e4a08
+(0x   x   x   tqq (Bb609578e51c97626d0e7da8e1776eaa30704c9
+(0x   x   x   mqq (Bd778ef01d122083fcab042d54a9ff108a708a0
+(0x   x   tqq (Bef
+(0x   x   x   mqq (B8d7fb63d7f0a8302bdf8a2015b4369c997864c
+(0x   x   tqq (Bf1
+(0x   x   x   mqq (Bee28b7ff42dbc21a9bdee3b1af1fda13703a63
+(0x   x   tqq (Bf2
+(0x   x   x   tqq (B5d24262bd9fc8ffddff81e2102cdc2c0cc88e6
+(0x   x   x   mqq (Be65f95f49ac988b26c092852706523126fc06f
+(0x   x   tqq (Bf4
+(0x   x   x   mqq (B428a7f2961200244f5dafc5809806979fa89e1
+(0x   x   tqq (Bf5
+(0x   x   x   tqq (B06f2965068e365214d4abf48155f704c0e9ae6
+(0x   x   x   mqq (B37d010627b41583c5714f78a745a81d5df1937
+(0x   x   tqq (Bf8
+(0x   x   x   mqq (Bd2f0a444223ec7413e49e7ed79d1908a759326
+(0x   x   tqq (Bfa
+(0x   x   x   mqq (B3d20ca52f374264c41db97b8e68a6348037c1f
+(0x   x   tqq (Bfb
+(0x   x   x   mqq (B0f87bddea468cb82b7294782c028dce7e11f52
+(0x   x   tqq (Bfc
+(0x   x   x   mqq (B77cff4ca7a4122cb6d7f6e16fbda357f72529a
+(0x   x   tqq (Bfd
+(0x   x   x   mqq (Beccec8907dfeb39e1c9def3d0023609c2cfc85
+(0x   x   tqq (Bfe
+(0x   x   x   tqq (Bb67037691329a8079ab7206d3f8aee0c4e41ea
+(0x   x   x   mqq (Bd4ad750c5cfbfb9a616f38ba51ce7f7a959b96
+(0x   x   tqq (Bff
+(0x   x   x   mqq (Be786d15df3c5dde8e1ce071176399cb3621b93
+(0x   x   tqq (Binfo
+(0x   x   x   tqq (Bcommit-graph
+(0x   x   x   mqq (Bpacks
+(0x   x   mqq (Bpack
+(0x   x       tqq (Bpack-a05a1ecaf6e651f2faaefd580e949502c98f7558.idx
+(0x   x       tqq (Bpack-a05a1ecaf6e651f2faaefd580e949502c98f7558.pack
+(0x   x       mqq (Bpack-a05a1ecaf6e651f2faaefd580e949502c98f7558.rev
+(0x   tqq (Bpacked-refs
+(0x   mqq (Brefs
+(0x       tqq (Bheads
+(0x       x   mqq (Bmain
+(0x       tqq (Bremotes
+(0x       x   mqq (Borigin
+(0x       x       mqq (Bmain
+(0x       mqq (Btags
+(0tqq (B.gitignore
+(0tqq (B.pytest_cache
+(0x   tqq (B.gitignore
+(0x   tqq (BCACHEDIR.TAG
+(0x   tqq (BREADME.md
+(0x   mqq (Bv
+(0x       mqq (Bcache
+(0x           tqq (Blastfailed
+(0x           mqq (Bnodeids
+(0tqq (Baccounts
+(0x   tqq (B__init__.py
+(0x   tqq (B__pycache__
+(0x   x   tqq (B__init__.cpython-312.pyc
+(0x   x   tqq (Badmin.cpython-312.pyc
+(0x   x   tqq (Bapps.cpython-312.pyc
+(0x   x   tqq (Bfactories.cpython-312.pyc
+(0x   x   tqq (Bforms.cpython-312.pyc
+(0x   x   tqq (Bmodels.cpython-312.pyc
+(0x   x   tqq (Bnotifications.cpython-312.pyc
+(0x   x   tqq (Broles.cpython-312.pyc
+(0x   x   tqq (Bsignals.cpython-312.pyc
+(0x   x   tqq (Burls.cpython-312.pyc
+(0x   x   mqq (Bviews.cpython-312.pyc
+(0x   tqq (Badmin.py
+(0x   tqq (Bapps.py
+(0x   tqq (Bfactories.py
+(0x   tqq (Bforms.py
+(0x   tqq (Bmanagement
+(0x   x   mqq (Bcommands
+(0x   x       tqq (B__pycache__
+(0x   x       x   mqq (Busers_init.cpython-312.pyc
+(0x   x       mqq (Busers_init.py
+(0x   tqq (Bmigrations
+(0x   x   tqq (B0001_initial.py
+(0x   x   tqq (B0002_notification.py
+(0x   x   tqq (B__init__.py
+(0x   x   mqq (B__pycache__
+(0x   x       tqq (B0001_initial.cpython-312.pyc
+(0x   x       tqq (B0002_alter_userprofile_public_name.cpython-312.pyc
+(0x   x       tqq (B0002_notification.cpython-312.pyc
+(0x   x       tqq (B0003_alter_userprofile_public_status.cpython-312.pyc
+(0x   x       tqq (B0004_groups_init.cpython-312.pyc
+(0x   x       mqq (B__init__.cpython-312.pyc
+(0x   tqq (Bmodels.py
+(0x   tqq (Bnotifications.py
+(0x   tqq (Broles.py
+(0x   tqq (Bsignals.py
+(0x   tqq (Btemplates
+(0x   x   tqq (Baccounts
+(0x   x   x   tqq (Bnotifications.html
+(0x   x   x   tqq (Bprofile.html
+(0x   x   x   tqq (Bprofile_page.html
+(0x   x   x   tqq (Bpublic_profile.html
+(0x   x   x   tqq (Brole_landing.html
+(0x   x   x   mqq (Buser_search.html
+(0x   x   mqq (Bregistration
+(0x   x       tqq (Blogin.html
+(0x   x       tqq (Bpassword_change_done.html
+(0x   x       tqq (Bpassword_change_form.html
+(0x   x       mqq (Bregister.html
+(0x   tqq (Btests
+(0x   x   tqq (B__init__.py
+(0x   x   tqq (B__pycache__
+(0x   x   x   tqq (B__init__.cpython-312.pyc
+(0x   x   x   tqq (Btests_login.cpython-312-pytest-8.4.1.pyc
+(0x   x   x   mqq (Btests_login.cpython-312.pyc
+(0x   x   mqq (Btests_login.py
+(0x   tqq (Burls.py
+(0x   mqq (Bviews.py
+(0tqq (Bapi
+(0x   tqq (B__init__.py
+(0x   tqq (B__pycache__
+(0x   x   tqq (B__init__.cpython-312.pyc
+(0x   x   tqq (Badmin.cpython-312.pyc
+(0x   x   tqq (Bapps.cpython-312.pyc
+(0x   x   tqq (Bmodels.cpython-312.pyc
+(0x   x   tqq (Bserializers.cpython-312.pyc
+(0x   x   tqq (Btests.cpython-312-pytest-8.4.1.pyc
+(0x   x   tqq (Burls.cpython-312.pyc
+(0x   x   tqq (Butils.cpython-312.pyc
+(0x   x   mqq (Bviews.cpython-312.pyc
+(0x   tqq (Bapps.py
+(0x   tqq (Bmigrations
+(0x   x   tqq (B__init__.py
+(0x   x   mqq (B__pycache__
+(0x   x       mqq (B__init__.cpython-312.pyc
+(0x   tqq (Bpermissions.py
+(0x   tqq (Bserializers.py
+(0x   tqq (Btemplates
+(0x   x   mqq (Bapi
+(0x   x       mqq (Bapi-about.html
+(0x   tqq (Btests
+(0x   x   tqq (B__pycache__
+(0x   x   x   tqq (Bconftest.cpython-312-pytest-8.4.1.pyc
+(0x   x   x   tqq (Btest_courses_api.cpython-312-pytest-8.4.1.pyc
+(0x   x   x   mqq (Btest_users_api.cpython-312-pytest-8.4.1.pyc
+(0x   x   tqq (Bconftest.py
+(0x   x   tqq (Btest_courses_api.py
+(0x   x   mqq (Btest_users_api.py
+(0x   tqq (Burls.py
+(0x   tqq (Butils.py
+(0x   mqq (Bviews.py
+(0tqq (Bchat
+(0x   tqq (B__init__.py
+(0x   tqq (B__pycache__
+(0x   x   tqq (B__init__.cpython-312.pyc
+(0x   x   tqq (Badmin.cpython-312.pyc
+(0x   x   tqq (Bapps.cpython-312.pyc
+(0x   x   tqq (Bconsumers.cpython-312.pyc
+(0x   x   tqq (Bfactories.cpython-312.pyc
+(0x   x   tqq (Bmodels.cpython-312.pyc
+(0x   x   tqq (Brouting.cpython-312.pyc
+(0x   x   tqq (Burls.cpython-312.pyc
+(0x   x   mqq (Bviews.cpython-312.pyc
+(0x   tqq (Badmin.py
+(0x   tqq (Bapps.py
+(0x   tqq (Bconsumers.py
+(0x   tqq (Bfactories.py
+(0x   tqq (Bmigrations
+(0x   x   tqq (B0001_initial.py
+(0x   x   tqq (B0002_alter_chatmessage_options_alter_chatmessage_sender_and_more.py
+(0x   x   tqq (B__init__.py
+(0x   x   mqq (B__pycache__
+(0x   x       tqq (B0001_initial.cpython-312.pyc
+(0x   x       tqq (B0002_alter_chatmessage_options_alter_chatmessage_sender_and_more.cpython-312.pyc
+(0x   x       mqq (B__init__.cpython-312.pyc
+(0x   tqq (Bmodels.py
+(0x   tqq (Brouting.py
+(0x   tqq (Btemplates
+(0x   x   mqq (Bchat
+(0x   x       tqq (Bcreate_confirm.html
+(0x   x       tqq (Bindex.html
+(0x   x       mqq (Broom.html
+(0x   tqq (Btests
+(0x   x   tqq (B.pytest_cache
+(0x   x   x   tqq (B.gitignore
+(0x   x   x   tqq (BCACHEDIR.TAG
+(0x   x   x   tqq (BREADME.md
+(0x   x   x   mqq (Bv
+(0x   x   x       mqq (Bcache
+(0x   x   x           tqq (Blastfailed
+(0x   x   x           mqq (Bnodeids
+(0x   x   tqq (B__init__.py
+(0x   x   tqq (B__pycache__
+(0x   x   x   tqq (B__init__.cpython-312.pyc
+(0x   x   x   tqq (Btest_chat.cpython-312.pyc
+(0x   x   x   tqq (Btest_http_chat.cpython-312-pytest-8.4.1.pyc
+(0x   x   x   tqq (Btest_ws_chat.cpython-312-pytest-8.4.1.pyc
+(0x   x   x   tqq (Btests_chat.cpython-312-pytest-8.4.1.pyc
+(0x   x   x   mqq (Btests_chat.cpython-312.pyc
+(0x   x   tqq (Btest_http_chat.py
+(0x   x   mqq (Btest_ws_chat.py
+(0x   tqq (Burls.py
+(0x   mqq (Bviews.py
+(0tqq (Bcourse_materials
+(0x   tqq (BAWD-CW2-v2.pdf
+(0x   mqq (BAWD-CW2-v2_qgs3qnP.pdf
+(0tqq (Bcourses
+(0x   tqq (B__init__.py
+(0x   tqq (B__pycache__
+(0x   x   tqq (B__init__.cpython-312.pyc
+(0x   x   tqq (Badmin.cpython-312.pyc
+(0x   x   tqq (Bapps.cpython-312.pyc
+(0x   x   tqq (Bforms.cpython-312.pyc
+(0x   x   tqq (Bmodels.cpython-312.pyc
+(0x   x   tqq (Btasks.cpython-312.pyc
+(0x   x   tqq (Burls.cpython-312.pyc
+(0x   x   mqq (Bviews.cpython-312.pyc
+(0x   tqq (Badmin.py
+(0x   tqq (Bapps.py
+(0x   tqq (Bforms.py
+(0x   tqq (Bmigrations
+(0x   x   tqq (B0001_initial.py
+(0x   x   tqq (B__init__.py
+(0x   x   mqq (B__pycache__
+(0x   x       tqq (B0001_initial.cpython-312.pyc
+(0x   x       tqq (B0002_course_enrolled_users.cpython-312.pyc
+(0x   x       tqq (B0003_material.cpython-312.pyc
+(0x   x       tqq (B0004_material_content.cpython-312.pyc
+(0x   x       tqq (B0005_coursefeedback.cpython-312.pyc
+(0x   x       tqq (B0006_alter_coursefeedback_rating.cpython-312.pyc
+(0x   x       tqq (B0007_enrollment_alter_course_enrolled_users.cpython-312.pyc
+(0x   x       mqq (B__init__.cpython-312.pyc
+(0x   tqq (Bmodels.py
+(0x   tqq (Btasks.py
+(0x   tqq (Btemplates
+(0x   x   mqq (Bcourses
+(0x   x       tqq (Bcourse_available_list.html
+(0x   x       tqq (Bcourse_collaborating_courses.html
+(0x   x       tqq (Bcourse_collaborators.html
+(0x   x       tqq (Bcourse_created_list.html
+(0x   x       tqq (Bcourse_detail.html
+(0x   x       tqq (Bcourse_detail_base.html
+(0x   x       tqq (Bcourse_detail_feedback.html
+(0x   x       tqq (Bcourse_detail_materials.html
+(0x   x       tqq (Bcourse_detail_registration.html
+(0x   x       tqq (Bcourse_detail_teacher_area.html
+(0x   x       tqq (Bcourse_enrolled_list.html
+(0x   x       tqq (Bcourse_enrolled_students.html
+(0x   x       tqq (Bcourse_form.html
+(0x   x       tqq (Bcourse_list.html
+(0x   x       tqq (Bfeedback_form.html
+(0x   x       tqq (Bfeedback_summary_and_list.html
+(0x   x       tqq (Bmaterial_confirm_delete.html
+(0x   x       tqq (Bmaterial_form.html
+(0x   x       mqq (Bmaterial_list.html
+(0x   tqq (Btests
+(0x   x   tqq (B__init__.py
+(0x   x   tqq (B__pycache__
+(0x   x   x   tqq (B__init__.cpython-312.pyc
+(0x   x   x   tqq (Btests_course.cpython-312-pytest-8.4.1.pyc
+(0x   x   x   tqq (Btests_course_create.cpython-312-pytest-8.4.1.pyc
+(0x   x   x   mqq (Btests_course_create.cpython-312.pyc
+(0x   x   mqq (Btests_course.py
+(0x   tqq (Burls.py
+(0x   mqq (Bviews.py
+(0tqq (Bdb.json
+(0tqq (Bdb.sqlite3
+(0tqq (Bdumpdata.sh
+(0tqq (Belearn
+(0x   tqq (B__init__.py
+(0x   tqq (B__pycache__
+(0x   x   tqq (B__init__.cpython-312.pyc
+(0x   x   tqq (Basgi.cpython-312.pyc
+(0x   x   tqq (Bcelery.cpython-312.pyc
+(0x   x   tqq (Bsettings.cpython-312.pyc
+(0x   x   tqq (Burls.cpython-312.pyc
+(0x   x   mqq (Bwsgi.cpython-312.pyc
+(0x   tqq (Basgi.py
+(0x   tqq (Bcelery.py
+(0x   tqq (Bsettings.py
+(0x   tqq (Btemplates
+(0x   x   tqq (Bbase.html
+(0x   x   tqq (Bbase_with_sidebar.html
+(0x   x   mqq (Bsidebar.html
+(0x   tqq (Burls.py
+(0x   mqq (Bwsgi.py
+(0tqq (Berd.png
+(0tqq (Bmanage.py
+(0tqq (Bmedia
+(0x   mqq (Bcourse_materials
+(0x       tqq (B7.401.pdf
+(0x       tqq (B7_BT1Zoa8.401.pdf
+(0x       tqq (B7_VZWpjZM.401.pdf
+(0x       tqq (B7_uDYhWlh.401.pdf
+(0x       tqq (B7_xSgYhYY.401.pdf
+(0x       tqq (BAWD-CW2-v2.pdf
+(0x       tqq (BAWD-CW2-v2_GqS98Qa.pdf
+(0x       tqq (BAWD-CW2-v2_gjd0gou.pdf
+(0x       tqq (BAWD-CW2-v2_qQXqb83.pdf
+(0x       mqq (BCM3035_Coursework_Rubrics.pdf
+(0tqq (Bpostgres_init.sql
+(0tqq (Bpytest.ini
+(0tqq (Breadme.md
+(0tqq (Brender-start.sh
+(0tqq (Brequirements.txt
+(0mqq (Btree.txt
+
+204 directories, 437 files

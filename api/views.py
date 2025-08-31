@@ -150,7 +150,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
             .prefetch_related("collaborators", "collaborators__profile")
             .distinct()
         )
-        # via your M2M (through=Enrollment) with related_name="courses_enrolled"
+        # through related_name="courses_enrolled"
         enrolled = (
             u.courses_enrolled
              .select_related("creator", "creator__profile")
