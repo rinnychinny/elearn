@@ -14,9 +14,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
         return user.profile.public_name
 
     async def connect(self):
-
-        logger.info("WebSocket connect called")
-
         self.room_id = self.scope['url_route']['kwargs']['room_id']
         self.room_group_name = f'chat_{self.room_id}'
 
@@ -34,7 +31,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
         await self.accept()
 
     async def disconnect(self, close_code):
-        logger.info("WebSocket disconnect called")
         try:
             await self.channel_layer.group_discard(
                 self.room_group_name,
@@ -44,11 +40,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
             logger.error(f"Error during disconnect: {e}")
 
     async def receive(self, text_data):
-        logger.info("WebSocket receive called")
-
+        # new chat message has been sent to the socket
         try:
-            logger.debug(f"Receive called with text_data: {text_data}")
-
             # Get user from scope and verify authenticated
             user = self.scope.get('user', None)
             if not user or not user.is_authenticated:
@@ -81,9 +74,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             logger.error(f"Error in receive: {e}", exc_info=True)
 
     async def chat_message(self, event):
-        logger.info("WebSocket chat_message called")
         try:
-            logger.debug(f"chat_message event: {event}")
             await self.send(text_data=json.dumps({
                 'message': event['message'],
                 'display_name': event['display_name'],
